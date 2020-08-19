@@ -3,11 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Post;
 
 class Post extends Model
 {
-    public function comments()
+    public function categories()
     {
-        return $this->hasMany('App\Comment');
+        return $this->belongsTo(Post::class, 'category_posts_id');
+    }
+
+    public function coments()
+    {
+        return $this->morphMany('App\Models\Coment', 'comentable');
     }
 }

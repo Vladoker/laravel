@@ -10,6 +10,4 @@ class Testimonial extends Model
 
     // protected $primaryKey = 'id';
 
-    $testimonials = Testimonial::all();
-
 }
