@@ -7,13 +7,13 @@ use App\Models\Post;
 
 class Post extends Model
 {
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Post::class, 'category_posts_id');
+        return $this->belongsTo(CategoryPost::class, 'category_post_id');
     }
 
-    public function coments()
+    public function comments()
     {
-        return $this->morphMany('App\Models\Coment', 'comentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

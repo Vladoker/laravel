@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    $post = App\Models\Post::first()->coments;
+    $post = App\Models\Post::get();
     dd($post);
 
     return view('welcome');

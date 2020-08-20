@@ -15,8 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_posts_id');
-            $table->foreign('category_posts_id')->references('id')->on('category_posts');
+            $table->unsignedBigInteger('category_post_id');
+            // $table->foreign('category_post_id')->references('id')->on('category_posts');
             $table->string('title', 75);
             $table->string('image', 255);
             $table->boolean('show_index');
@@ -28,17 +28,6 @@ class CreatePostsTable extends Migration
             $table->string('meta_desc', 512);
             $table->timestamps();
             
-
- 
-
-            
-
-           
-
-
-  
-
-
         });
     }
 

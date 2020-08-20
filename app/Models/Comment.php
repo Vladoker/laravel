@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Coment extends Model
+class Comment extends Model
 {
     //protected $keyType = 'string';
-    public function comentable()
+    public function commentable()
     {
         return $this->morphTo();
     }

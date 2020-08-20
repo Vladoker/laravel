@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Recipe extends Model
+class Recipe extends Model 
 {
     public function recipes()
     {
-        return $this->belongsTo(Recipe::class);
+        return $this->belongsTo(CategoryRecipe::class, 'categorie_recipe_id');
     }
 
-    public function coments()
+    public function comments()
     {
-        return $this->morphMany('App\Models\Coment', 'comentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
