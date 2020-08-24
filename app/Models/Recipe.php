@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model 
 {
-    public function recipes()
+    public function recipe()
     {
         return $this->belongsTo(CategoryRecipe::class, 'categorie_recipe_id');
     }
