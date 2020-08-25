@@ -135,8 +135,8 @@
                                     </div>
                                 </ul>
                             </li>
-
-                            <li class="menu-item menu-item-has-children"><a href="{{ route('blog') }}">Blogs</a>
+                            <li class="menu-item menu-item-has-children">
+                                <a href="{{ route('blog') }}">Blogs</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog_grid.html">Blog Grid</a></li>
                                     <li><a href="blog_standard.html">Blog Standard</a></li>

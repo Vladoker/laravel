@@ -10,3 +10,8 @@ Route::get('/blog', 'BlogController@index')->name('blog');
 Route::get('/article', 'BlogsController@show')->name('article');
 
 Route::get('/404', function(){ return view('404'); })->name('404');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
