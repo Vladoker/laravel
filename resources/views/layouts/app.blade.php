@@ -1,12 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Mirrored from megasoft.biz/olima/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 17 Aug 2020 10:44:59 GMT -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title-page')</title>
+    <!-- All Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="wid th=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- page title -->
+    <title>Olima - Modern Personal Blog HTML Template</title>
+    <!------ Favicon Icon ------->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
+    <!-- All css -->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome/css/all.min.css') }}">
+    <!-- flaticon css -->
+    <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon/flaticon.css') }}">
+    <!-- magnific css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
+    <!-- slick css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+    <!-- swiper slider css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+    <!-- nice-select css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+    <!-- jquery.nice-number css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.nice-number.css') }}">
+    <!-- jquery-ui css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
+    <!-- default css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
+    <!-- style css-->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 <body>
-    @yield('content')
+<!-- Start preloader area -->
+<div class="preloader">
+    <div class="lds-ellipsis">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- End preloader area -->
+<!-- Start olima_header area -->
+<header class="olima_header header_v1">
+    <div class="top_header light_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="top_left">
+                        <ul>
+                            <li><a href="{{ route('about') }}">About</a></li>
+                            <li><a href="{{ route('contacts') }}">Contact</a></li>
+                            <li><a href="{{ route('blog') }}">Blogs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="social_box">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_navigation">
+        <div class="container">
+            <div class="nav-container d-flex align-items-center justify-content-between">
+                <div class="nav-menu">
+                    <!-- Navbar Close Icon -->
+                    <div class="navbar-close">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- nav-emnu -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="menu-item menu-item-has-children"><a href="{{route('home')}}">Home</a></li>
+                            <li class="menu-item menu-item-has-children static"><a href="{{route('about')}}">About</a>
+                                <ul class="mega-menu">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <li class="mega-item">
+                                                <a href="#">Trending Posts</a>
+                                                <ul>
+                                                    <li><a href="index-2.html">Home 01</a></li>
+                                                    <li><a href="index_2.html">Home 02</a></li>
+                                                    <li><a href="index_3.html">Home 03</a></li>
+                                                    <li><a href="index_4.html">Home 04</a></li>
+                                                </ul>
+                                            </li>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <li class="mega-item">
+                                                <a href="#">Latest Recipes</a>
+                                                <ul>
+                                                    <li><a href="index-2.html">Home 01</a></li>
+                                                    <li><a href="index_2.html">Home 02</a></li>
+                                                    <li><a href="index_3.html">Home 03</a></li>
+                                                    <li><a href="index_4.html">Home 04</a></li>
+                                                </ul>
+                                            </li>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <li class="mega-item">
+                                                <a href="#">Trending Posts</a>
+                                                <ul>
+                                                    <li><a href="index-2.html">Home 01</a></li>
+                                                    <li><a href="index_2.html">Home 02</a></li>
+                                                    <li><a href="index_3.html">Home 03</a></li>
+                                                    <li><a href="index_4.html">Home 04</a></li>
+                                                </ul>
+                                            </li>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <li class="mega-item">
+                                                <a href="#">Latest Recipes</a>
+                                                <ul>
+                                                    <li><a href="index-2.html">Home 01</a></li>
+                                                    <li><a href="index_2.html">Home 02</a></li>
+                                                    <li><a href="index_3.html">Home 03</a></li>
+                                                    <li><a href="index_4.html">Home 04</a></li>
+                                                </ul>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+
+                            <li class="menu-item menu-item-has-children"><a href="{{ route('blog') }}">Blogs</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog_grid.html">Blog Grid</a></li>
+                                    <li><a href="blog_standard.html">Blog Standard</a></li>
+                                    <li><a href="blog_masonry.html">Blog Masonry</a></li>
+                                    <li><a href="blog_details.html">Blog Details</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog_details.html">Blog Details</a>
+                                            <li><a href="blog_slider_details.html">Blog Slider Details</a>
+                                            <li><a href="blog_audio_details.html">Blog Audio Details</a>
+                                            <li><a href="blog_video_details.html">Blog Video Details</a>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ route('contacts') }}">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <!-- nav-pushed -->
+                    <div class="nav-pushed-item">
+                        <div class="header_search">
+                            <form>
+                                <div class="form_group">
+                                    <input type="search" class="form_control" placeholder="Hit enter to search" name="search" required>
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- site logo -->
+                <div class="brand_logo">
+                    <a href="{{ route('home') }}"><img src="assets/images/logo_1.png" class="img-fluid" alt=""></a>
+                </div>
+                <div class="nav-push-item">
+                    <div class="header_search">
+                        <form>
+                            <div class="form_group">
+                                <input type="search" class="form_control" placeholder="Hit enter to search" name="search" required>
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Navbar Toggler -->
+                <div class="navbar-toggler">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><!-- End olima_header area -->
+
+
+@yield('content')
+
+
+<!-- Start olima_footer -->
+<footer class="olima_footer footer_v1 white_gray_bg pt-100 pb-90">
+    <div class="footer_widget">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="widget_box useful_link_widget">
+                        <ul class="widget_link">
+                            <li><a href="#">Privacy & Policy</a></li>
+                            <li><a href="{{ route('contacts') }}">Contact</a></li>
+                            <li><a href="{{ route('about') }}">About Me</a></li>
+                        </ul>
+                        <ul class="social_link">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="widget_box about_box">
+                        <a href="{{ route('home') }}"><img src="assets/images/logo_2.png" class="img-fluid" alt=""></a>
+                        <p>Proin ac quam et lectus vestibulum blandit. Nunc maximus nibh at placerat tincidunt. Nam sem lacus, ornare non ante sed, ultricies fringilla massa. Ut congue</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="widget_box copyright_box">
+                        <h6>Cook and Blog with <i class="fas fa-heart"></i> by Apex Nusrat</h6>
+                        <p>© 2020 TastyTreats all rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End olima_footer -->
+<!--Scroll-up-->
+<a id="scroll_up" ><i class="fas fa-angle-up"></i></a>
+<!-- jquery  -->
+<script src="{{ asset('assets/js/vendor/jquery-3.5.0.min.js') }}"></script>
+<!--modernizr js-->
+<script src="{{ asset('assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+<!-- Bootstrap js  -->
+<script src="{{ asset('assets/js/vendor/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+<!-- Magnific-popup js-->
+<script src="{{ asset('assets/js/vendor/jquery.magnific-popup.min.js') }}"></script>
+<!-- Slick js-->
+<script src="{{ asset('assets/js/vendor/slick.min.js') }}"></script>
+<!-- swiper slider js-->
+<script src="{{ asset('assets/js/vendor/swiper-bundle.min.js') }}"></script>
+<!-- Isotope js-->
+<script src="{{ asset('assets/js/vendor/isotope.pkgd.min.js') }}"></script>
+<!-- Slick js-->
+<script src="{{ asset('assets/js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+<!-- nice select js-->
+<script src="{{ asset('assets/js/vendor/jquery.nice-select.min.js') }}"></script>
+<!-- select number -->
+<script src="{{ asset('assets/js/vendor/jquery.nice-number.min.js') }}"></script>
+<!-- jquery-ui js-->
+<script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
+<!-- custom js  -->
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 </body>
+
+
 </html>
