@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="wid th=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- page title -->
-    <title>Olima - Modern Personal Blog HTML Template</title>
+    <title>{{ setting('site.title') }}</title>
     <!------ Favicon Icon ------->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!-- All css -->
@@ -86,70 +86,70 @@
                         <ul>
                             <li class="menu-item menu-item-has-children"><a href="{{route('home')}}">Home</a></li>
                             <li class="menu-item menu-item-has-children static"><a href="{{route('about')}}">About</a>
-                                <ul class="mega-menu">
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <li class="mega-item">
-                                                <a href="#">Trending Posts</a>
-                                                <ul>
-                                                    <li><a href="index-2.html">Home 01</a></li>
-                                                    <li><a href="index_2.html">Home 02</a></li>
-                                                    <li><a href="index_3.html">Home 03</a></li>
-                                                    <li><a href="index_4.html">Home 04</a></li>
-                                                </ul>
-                                            </li>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <li class="mega-item">
-                                                <a href="#">Latest Recipes</a>
-                                                <ul>
-                                                    <li><a href="index-2.html">Home 01</a></li>
-                                                    <li><a href="index_2.html">Home 02</a></li>
-                                                    <li><a href="index_3.html">Home 03</a></li>
-                                                    <li><a href="index_4.html">Home 04</a></li>
-                                                </ul>
-                                            </li>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <li class="mega-item">
-                                                <a href="#">Trending Posts</a>
-                                                <ul>
-                                                    <li><a href="index-2.html">Home 01</a></li>
-                                                    <li><a href="index_2.html">Home 02</a></li>
-                                                    <li><a href="index_3.html">Home 03</a></li>
-                                                    <li><a href="index_4.html">Home 04</a></li>
-                                                </ul>
-                                            </li>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <li class="mega-item">
-                                                <a href="#">Latest Recipes</a>
-                                                <ul>
-                                                    <li><a href="index-2.html">Home 01</a></li>
-                                                    <li><a href="index_2.html">Home 02</a></li>
-                                                    <li><a href="index_3.html">Home 03</a></li>
-                                                    <li><a href="index_4.html">Home 04</a></li>
-                                                </ul>
-                                            </li>
-                                        </div>
-                                    </div>
-                                </ul>
+{{--                                <ul class="mega-menu">--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-lg-3">--}}
+{{--                                            <li class="mega-item">--}}
+{{--                                                <a href="#">Trending Posts</a>--}}
+{{--                                                <ul>--}}
+{{--                                                    <li><a href="index-2.html">Home 01</a></li>--}}
+{{--                                                    <li><a href="index_2.html">Home 02</a></li>--}}
+{{--                                                    <li><a href="index_3.html">Home 03</a></li>--}}
+{{--                                                    <li><a href="index_4.html">Home 04</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-3">--}}
+{{--                                            <li class="mega-item">--}}
+{{--                                                <a href="#">Latest Recipes</a>--}}
+{{--                                                <ul>--}}
+{{--                                                    <li><a href="index-2.html">Home 01</a></li>--}}
+{{--                                                    <li><a href="index_2.html">Home 02</a></li>--}}
+{{--                                                    <li><a href="index_3.html">Home 03</a></li>--}}
+{{--                                                    <li><a href="index_4.html">Home 04</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-3">--}}
+{{--                                            <li class="mega-item">--}}
+{{--                                                <a href="#">Trending Posts</a>--}}
+{{--                                                <ul>--}}
+{{--                                                    <li><a href="index-2.html">Home 01</a></li>--}}
+{{--                                                    <li><a href="index_2.html">Home 02</a></li>--}}
+{{--                                                    <li><a href="index_3.html">Home 03</a></li>--}}
+{{--                                                    <li><a href="index_4.html">Home 04</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-lg-3">--}}
+{{--                                            <li class="mega-item">--}}
+{{--                                                <a href="#">Latest Recipes</a>--}}
+{{--                                                <ul>--}}
+{{--                                                    <li><a href="index-2.html">Home 01</a></li>--}}
+{{--                                                    <li><a href="index_2.html">Home 02</a></li>--}}
+{{--                                                    <li><a href="index_3.html">Home 03</a></li>--}}
+{{--                                                    <li><a href="index_4.html">Home 04</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </ul>--}}
                             </li>
                             <li class="menu-item menu-item-has-children">
                                 <a href="{{ route('blog') }}">Blogs</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog_grid.html">Blog Grid</a></li>
-                                    <li><a href="blog_standard.html">Blog Standard</a></li>
-                                    <li><a href="blog_masonry.html">Blog Masonry</a></li>
-                                    <li><a href="blog_details.html">Blog Details</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog_details.html">Blog Details</a>
-                                            <li><a href="blog_slider_details.html">Blog Slider Details</a>
-                                            <li><a href="blog_audio_details.html">Blog Audio Details</a>
-                                            <li><a href="blog_video_details.html">Blog Video Details</a>
-                                        </ul>
-                                    </li>
-                                </ul>
+{{--                                <ul class="sub-menu">--}}
+{{--                                    <li><a href="blog_grid.html">Blog Grid</a></li>--}}
+{{--                                    <li><a href="blog_standard.html">Blog Standard</a></li>--}}
+{{--                                    <li><a href="blog_masonry.html">Blog Masonry</a></li>--}}
+{{--                                    <li><a href="blog_details.html">Blog Details</a>--}}
+{{--                                        <ul class="sub-menu">--}}
+{{--                                            <li><a href="blog_details.html">Blog Details</a>--}}
+{{--                                            <li><a href="blog_slider_details.html">Blog Slider Details</a>--}}
+{{--                                            <li><a href="blog_audio_details.html">Blog Audio Details</a>--}}
+{{--                                            <li><a href="blog_video_details.html">Blog Video Details</a>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
                             </li>
                             <li><a href="{{ route('contacts') }}">Contact</a></li>
                         </ul>

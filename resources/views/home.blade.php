@@ -79,66 +79,18 @@
     <section class="olima_categories categories_v1 pt-130 pb-110">
         <div class="container">
             <div class="categories_slide">
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_1.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Chicken</h5>
+                @foreach($categories as $category)
+                    <a href="#" class="categories_box">
+                        <div class="cat_img">
+                            <img src="{{ Voyager::image($category->image) }}" class="img-fluid" alt="">
+                            <div class="cat_overlay">
+                                <div class="cat_content">
+                                    <h5>{{ $categorie->name }}</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_2.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Pizza</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_3.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Fast Food</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_4.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Dessert</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_5.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Vegetarian</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="categories_box">
-                    <div class="cat_img">
-                        <img src="assets/images/cat_3.jpg" class="img-fluid" alt="">
-                        <div class="cat_overlay">
-                            <div class="cat_content">
-                                <h5>Fast Food</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>

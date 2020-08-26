@@ -30,28 +30,32 @@
                 <div class="col-lg-9">
                     <div class="blog_details_wrapper">
                         <div class="post_img">
-                            <img src="assets/images/video_12.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="{{ $post->slug }}">
                         </div>
                         <div class="post_content pb-70">
-                            <h3>Garlic Butter Chicken Bites for Morning (20-Minute Recipe!)</h3>
+                            <h3>{{ $post->title }}</h3>
                             <div class="post_meta">
-                                <span class="calender">February 20, 2020</span>
+                                <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
                                 <span class="comment">0 Comment</span>
-                                <span class="time">14 min read</span>
+                                <span class="time">{{ rand(10, 45) }} min read</span>
                             </div>
-                            <p class="para_1">Integer ac interdum lacus. Nunc porta semper lacus a varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc sagittis consectetur velit, ac gravida nunc gravida et. Vestibulum at eros imperdiet, volutpat nunc vitae, ornare erat.</p>
+                            <p class="para_1">
+                                {{ $post->body }}
+                            </p>
                             <blockquote>
-                                <p>Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in nibh faucibus, iaculis lorem vitae, cursus velit. Etiam non blandit ex. Mauris in fringilla velit.</p>
+                                <p>
+                                    Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in nibh faucibus, iaculis lorem vitae, cursus velit. Etiam non blandit ex. Mauris in fringilla velit.
+                                </p>
                             </blockquote>
                             <div class="row pt-45 pb-45">
                                 <div class="col-lg-6">
                                     <div class="olima_img">
-                                        <a href="#"><img src="assets/images/post_46.jpg" class="img-fluid" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/images/post_46.jpg') }}" class="img-fluid" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="olima_img">
-                                        <a href="#"><img src="assets/images/post_47.jpg" class="img-fluid" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/images/post_47.jpg') }}" class="img-fluid" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +73,7 @@
                                     <li>Praesent convallis eros ac dolor dapibus, vel dictum ante congue.</li>
                                 </ul>
                             </div>
-                            <img src="assets/images/post_48.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/images/post_48.jpg') }}" class="img-fluid" alt="">
                         </div>
                         <div class="post_share_tag">
                             <div class="row">
@@ -102,14 +106,14 @@
                                 <a href="#" class="prev"><i class="fas fa-long-arrow-alt-left"></i> Previous</a>
                             </div>
                             <div class="box">
-                                <a href="#"><img src="assets/images/icon.png" alt=""></a>
+                                <a href="#"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
                             </div>
                             <div class="box">
                                 <a href="#" class="next">Next <i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                         </div>
                         <div class="author_box mb-60">
-                            <img src="assets/images/admin_7.png" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/images/admin_7.png') }}" class="img-fluid" alt="">
                             <h5>Author Name</h5>
                             <h6>Articles Writer</h6>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
@@ -122,7 +126,7 @@
                                 <div class="col-lg-6">
                                     <div class="grid_item">
                                         <div class="post_img">
-                                            <a href="#"><img src="assets/images/post_49.jpg" class="img-fluid" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/images/post_49.jpg') }}" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="post_content">
                                             <div class="post_meta">
@@ -136,7 +140,7 @@
                                 <div class="col-lg-6">
                                     <div class="grid_item">
                                         <div class="post_img">
-                                            <a href="#"><img src="assets/images/post_50.jpg" class="img-fluid" alt=""></a>
+                                            <a href="#"><img src="{{ asset('assets/images/post_50.jpg') }}" class="img-fluid" alt=""></a>
                                         </div>
                                         <div class="post_content">
                                             <div class="post_meta">
@@ -153,7 +157,7 @@
                             <h3>(3) Comments</h3>
                             <div class="single_comment d-flex">
                                 <div class="comment_img">
-                                    <img src="assets/images/comment_1.jpg" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/comment_1.jpg') }}" class="img-fluid" alt="">
                                 </div>
                                 <div class="comment_info">
                                     <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
@@ -164,7 +168,7 @@
                             </div>
                             <div class="single_comment d-flex">
                                 <div class="comment_img">
-                                    <img src="assets/images/comment_3.jpg" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/comment_3.jpg') }}" class="img-fluid" alt="">
                                 </div>
                                 <div class="comment_info">
                                     <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
@@ -175,7 +179,7 @@
                             </div>
                             <div class="single_comment d-flex">
                                 <div class="comment_img">
-                                    <img src="assets/images/comment_2.jpg" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/comment_2.jpg') }}" class="img-fluid" alt="">
                                 </div>
                                 <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
                                 <div class="comment_info">
@@ -227,7 +231,7 @@
                     <div class="olima_sidebar sidebar_v1">
                         <div class="widget_box about_box mb-45">
                             <div class="about_img">
-                                <img src="assets/images/about_1.jpg" class="img-fluid" alt="">
+                                <img src="{{ asset('assets/images/about_1.jpg') }}" class="img-fluid" alt="">
                             </div>
                             <div class="about_content">
                                 <h4>Hi, I am Apex!</h4>
@@ -245,7 +249,7 @@
                             <h4>Featured Post</h4>
                             <div class="single_post d-flex align-items-center">
                                 <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_1.jpg" class="img-fluid" alt=""></a>
+                                    <a href="#"><img src="{{ asset('assets/images/thumb_1.jpg') }}" class="img-fluid" alt=""></a>
                                 </div>
                                 <div class="post_content">
                                     <h3><a href="#">Cream Cheese Frosting</a></h3>
@@ -257,7 +261,7 @@
                             </div>
                             <div class="single_post d-flex align-items-center">
                                 <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_2.jpg" class="img-fluid" alt=""></a>
+                                    <a href="#"><img src="{{ asset('assets/images/thumb_2.jpg') }}" class="img-fluid" alt=""></a>
                                 </div>
                                 <div class="post_content">
                                     <h3><a href="#">Chicken Tortilla Soup</a></h3>
@@ -269,7 +273,7 @@
                             </div>
                             <div class="single_post d-flex align-items-center">
                                 <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_3.jpg" class="img-fluid" alt=""></a>
+                                    <a href="#"><img src="{{ asset('assets/images/thumb_3.jpg') }}" class="img-fluid" alt=""></a>
                                 </div>
                                 <div class="post_content">
                                     <h3><a href="#">Cream Cheese Frosting</a></h3>
@@ -284,7 +288,7 @@
                             <div class="title">
                                 <h3>Cook Book</h3>
                             </div>
-                            <img src="assets/images/book_1.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/images/book_1.jpg') }}" class="img-fluid" alt="">
                             <a href="#" class="olima_btn">Get The Book</a>
                         </div>
                         <div class="widget_box categories_widget mb-40">

@@ -29,24 +29,23 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
-                        @for($i = 0; $i < 10; $i++)
+                        @foreach($posts as $post)
                             <div class="col-lg-6">
                             <div class="grid_item mb-50">
                                 <div class="post_img">
-                                    <a href="{{ route('article') }}"><img src="assets/images/post_53.jpg" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('article', $post->slug) }}"><img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->slug }}"></a>
                                 </div>
                                 <div class="post_content">
                                     <div class="post_meta">
-                                        <span class="calender">February 20, 2020</span>
-                                        <span class="time">14 min read</span>
+                                        <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
+                                        <span class="time">{{ rand(10, 45) }} min read</span>
                                     </div>
-                                    <h3><a href="#">Garlic Butter Chicken Bites for Morning (20-Minute Recipe!) {{ $i }}</a></h3>
-                                    <a href="#" class="comments"><i class="fas fa-comments"></i>0 Comment</a>
-                                    <a href="#" class="btn_heart"><i class="fas fa-heart"></i>1</a>
+                                    <h3><a href="{{ route('article', $post->slug) }}">{{ $post->title }}</a></h3>
+                                    <a href="#" class="comments"><i class="fas fa-comments"></i>{{ $post->likes }}</a>
                                 </div>
                             </div>
                         </div>
-                        @endfor
+                        @endforeach
                         <div class="col-lg-12">
                             <div class="olima_pagination mt-30 mb-60">
                                 <ul>
@@ -65,7 +64,7 @@
                     <div class="olima_sidebar sidebar_v1">
                         <div class="widget_box about_box mb-40">
                             <div class="about_img">
-                                <img src="assets/images/about_1.jpg" class="img-fluid" alt="">
+                                <img src="{{ asset('assets/images/about_1.jpg') }}" class="img-fluid" alt="">
                             </div>
                             <div class="about_content">
                                 <h4>Hi, I am Apex!</h4>
@@ -81,48 +80,28 @@
                         </div>
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_1.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
+                            @foreach($popularPosts as $post)
+                                <div class="single_post d-flex align-items-center">
+                                    <div class="post_img">
+                                        <a href="{{ route('article', $post->slug) }}">
+                                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->slug }}">
+                                        </a>
+                                    </div>
+                                    <div class="post_content">
+                                        <h3><a href="{{ route('article', $post->slug) }}">{{ $post->title }}</a></h3>
+                                        <div class="post_meta">
+                                            <span><a href="#">{{ $post->created_at->format('l j, Y') }}</a></span>
+                                            <span class="comment">5</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_2.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Chicken Tortilla Soup</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_3.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="widget_box booking_widget mb-40">
                             <div class="title">
                                 <h3>Cook Book</h3>
                             </div>
-                            <img src="assets/images/book_1.jpg" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/images/book_1.jpg') }}" class="img-fluid" alt="">
                             <a href="#" class="olima_btn">Get The Book</a>
                         </div>
                         <div class="widget_box categories_widget mb-40">
