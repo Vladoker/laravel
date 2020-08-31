@@ -38,10 +38,11 @@
                                 <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
                                 <span class="comment">0 Comment</span>
                                 <span class="time">{{ rand(10, 45) }} min read</span>
+{{--                                para_1--}}
                             </div>
-                            <p class="para_1">
-                                {{ $post->body }}
-                            </p>
+
+                                <?php echo $post->body ?>
+
                             <blockquote>
                                 <p>
                                     Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in nibh faucibus, iaculis lorem vitae, cursus velit. Etiam non blandit ex. Mauris in fringilla velit.

@@ -96,48 +96,20 @@
                 </div>
             </div>
             <div class="testimonial_slide">
+                @foreach($comments as $comment)
                 <div class="testimonial_box">
                     <ul class="rating">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
+                        @for($i = 0; $i < $comment->rating; $i++)
+                            <li><i class="fas fa-star"></i></li>
+                        @endfor
                     </ul>
-                    <p>Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus malesuada, nec convallis lacus commodo. Duis blandit neque purus, nec auctor mi sollicitudin nec.</p>
+                    <p>{{ $comment->comment }}</p>
                     <div class="author_box">
                         <img src="assets/images/admin_5.jpg" class="img-fluid" alt="">
-                        <span>Chris Ortiz</span>
+                        <span>{{ $comment->name }}</span>
                     </div>
                 </div>
-                <div class="testimonial_box">
-                    <ul class="rating">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                    </ul>
-                    <p>Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus malesuada, nec convallis lacus commodo. Duis blandit neque purus, nec auctor mi sollicitudin nec.</p>
-                    <div class="author_box">
-                        <img src="assets/images/admin_6.jpg" class="img-fluid" alt="">
-                        <span>Chris Ortiz</span>
-                    </div>
-                </div>
-                <div class="testimonial_box">
-                    <ul class="rating">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                    </ul>
-                    <p>Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus malesuada, nec convallis lacus commodo. Duis blandit neque purus, nec auctor mi sollicitudin nec.</p>
-                    <div class="author_box">
-                        <img src="assets/images/admin_5.jpg" class="img-fluid" alt="">
-                        <span>Chris Ortiz</span>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

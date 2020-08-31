@@ -85,7 +85,7 @@
                             <img src="{{ Voyager::image($category->image) }}" class="img-fluid" alt="">
                             <div class="cat_overlay">
                                 <div class="cat_content">
-                                    <h5>{{ $categorie->name }}</h5>
+                                    <h5>{{ $category->name }}</h5>
                                 </div>
                             </div>
                         </div>
