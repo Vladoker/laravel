@@ -38,10 +38,11 @@
                                 <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
                                 <span class="comment">0 Comment</span>
                                 <span class="time">{{ rand(10, 45) }} min read</span>
-{{--                                para_1--}}
                             </div>
+                                <div class="para_1">
+                                    {!! $post->body !!}
+                                </div>
 
-                                <?php echo $post->body ?>
 
                             <blockquote>
                                 <p>
@@ -155,44 +156,28 @@
                             </div>
                         </div>
                         <div class="comment_area pt-50">
-                            <h3>(3) Comments</h3>
+                            <h3>{{ count($comments) }} Comments</h3>
+                            @foreach($comments as $comment)
                             <div class="single_comment d-flex">
                                 <div class="comment_img">
                                     <img src="{{ asset('assets/images/comment_1.jpg') }}" class="img-fluid" alt="">
                                 </div>
                                 <div class="comment_info">
                                     <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
-                                    <h5>Philip Fuller</h5>
-                                    <h6>April 18 2020. 4:25 PM</h6>
-                                    <p>Phasellus dignissim, tellus in pellentesque mollis, mauris orci dignissim nisl, id gravida nunc enim quis nibh. Maecenas convallis eros a ante dignissim, vitae elementum metus facilisis. Cras in maximus sem. Praesent libero augue, ornare eget quam sed.</p>
+                                    <h5>{{ $comment->name }}</h5>
+                                    <h6>{{ $comment->created_at->format('l j, Y') }}</h6>
+                                    <p>{{ $comment->comment }}</p>
                                 </div>
                             </div>
-                            <div class="single_comment d-flex">
-                                <div class="comment_img">
-                                    <img src="{{ asset('assets/images/comment_3.jpg') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="comment_info">
-                                    <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
-                                    <h5>Marie Gibson</h5>
-                                    <h6>April 18 2020. 4:25 PM</h6>
-                                    <p>Phasellus dignissim, tellus in pellentesque mollis, mauris orci dignissim nisl, id gravida nunc enim quis nibh. Maecenas convallis eros a ante dignissim, vitae elementum metus facilisis. Cras in maximus sem. Praesent libero augue, ornare eget quam sed.</p>
-                                </div>
-                            </div>
-                            <div class="single_comment d-flex">
-                                <div class="comment_img">
-                                    <img src="{{ asset('assets/images/comment_2.jpg') }}" class="img-fluid" alt="">
-                                </div>
-                                <a href="#" class="reply_btn"><i class="fas fa-reply"></i></a>
-                                <div class="comment_info">
-                                    <h5>Philip Fuller</h5>
-                                    <h6>April 18 2020. 4:25 PM</h6>
-                                    <p>Phasellus dignissim, tellus in pellentesque mollis, mauris orci dignissim nisl, id gravida nunc enim quis nibh. Maecenas convallis eros a ante dignissim, vitae elementum metus facilisis. Cras in maximus sem. Praesent libero augue, ornare eget quam sed.</p>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                         <div class="comment_form">
                             <h3>Leave a Comment</h3>
-                            <form>
+                            <form action="{{ route('article', $post->slug) }}" method="post">
+                                @csrf
+                                <input name="id" type="hidden" value="{{ $post->id }}">
+                                <input name="type" type="hidden" value="TCG\Voyager\Models\Post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form_group">
@@ -209,13 +194,13 @@
                                     <div class="col-lg-6">
                                         <div class="form_group">
                                             <label>Website</label>
-                                            <input type="url" class="form_control" name="url" required>
+                                            <input type="url" class="form_control" name="url">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form_group">
                                             <label>Email</label>
-                                            <input type="email" class="form_control" name="email" required>
+                                            <input type="email" class="form_control" name="email">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

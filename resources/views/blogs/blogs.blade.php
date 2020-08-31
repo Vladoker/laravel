@@ -41,7 +41,7 @@
                                         <span class="time">{{ rand(10, 45) }} min read</span>
                                     </div>
                                     <h3><a href="{{ route('article', $post->slug) }}">{{ $post->title }}</a></h3>
-                                    <a href="#" class="comments"><i class="fas fa-comments"></i>{{ $post->likes }}</a>
+                                    <a href="{{ route('article', $post->slug) }}" class="comments"><i class="fas fa-comments"></i>{{ count($post->comments) }}</a>
                                 </div>
                             </div>
                         </div>
@@ -88,10 +88,18 @@
                                         </a>
                                     </div>
                                     <div class="post_content">
-                                        <h3><a href="{{ route('article', $post->slug) }}">{{ $post->title }}</a></h3>
+                                        <h3>
+                                            <a href="{{ route('article', $post->slug) }}">
+                                                {{ $post->title }}
+                                            </a>
+                                        </h3>
                                         <div class="post_meta">
-                                            <span><a href="#">{{ $post->created_at->format('l j, Y') }}</a></span>
-                                            <span class="comment">5</span>
+                                            <span>
+                                                <a href="{{ route('article', $post->slug) }}">
+                                                    {{ $post->created_at->format('l j, Y') }}
+                                                </a>
+                                            </span>
+                                            <span class="comment">{{ count($post->comments) }}</span>
                                         </div>
                                     </div>
                                 </div>

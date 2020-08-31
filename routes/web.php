@@ -8,6 +8,7 @@ Route::get('/about', 'FrontController@about')->name('about');
 Route::get('/contacts', 'FrontController@contacts')->name('contacts');
 Route::get('/blog', 'BlogController@index')->name('blog');
 Route::get('/article/{slug}', 'BlogController@show')->name('article');
+Route::post('/article/{slug}', 'BlogController@store')->name('article');
 
 Route::get('/404', function(){ return view('404'); })->name('404');
 
