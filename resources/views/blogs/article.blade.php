@@ -37,7 +37,7 @@
                             <div class="post_meta">
                                 <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
                                 <span class="comment">0 Comment</span>
-                                <span class="time">{{ rand(10, 45) }} min read</span>
+                                <span class="time">{{ $post->min_read }} min read</span>
                             </div>
                                 <div class="para_1">
                                     {!! $post->body !!}
@@ -45,80 +45,22 @@
 
 
                             <blockquote>
-                                <p>
-                                    Mauris imperdiet orci dapibus, commodo libero nec, interdum tortor. Morbi in nibh faucibus, iaculis lorem vitae, cursus velit. Etiam non blandit ex. Mauris in fringilla velit.
-                                </p>
+                                <p>{{ $post->excerpt }}</p>
                             </blockquote>
-                            <div class="row pt-45 pb-45">
-                                <div class="col-lg-6">
-                                    <div class="olima_img">
-                                        <a href="#"><img src="{{ asset('assets/images/post_46.jpg') }}" class="img-fluid" alt=""></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="olima_img">
-                                        <a href="#"><img src="{{ asset('assets/images/post_47.jpg') }}" class="img-fluid" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Duis porta, ligula rhoncus euismod pretium, nisi tellus eleifend odio, luctus viverra sem dolor id sem. Maecenas a venenatis enim, quis porttitor magna. Etiam nec rhoncus neque. Sed quis ultrices eros. Curabitur sit amet eros eu arcu consectetur pulvinar. Aliquam sodales, turpis eget tristique tempor, sapien lacus facilisis diam, molestie efficitur sapien velit nec magna. Maecenas interdum efficitur tempor.</p>
-                            <p>Integer ac interdum lacus. Nunc porta semper lacus a varius. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc sagittis consectetur velit, ac gravida nunc gravida et. Vestibulum at eros imperdiet, volutpat nunc vitae, ornare erat. Proin interdum aliquet porta. Fusce ut semper ligula.</p>
-                            <div class="content_list mb-50">
-                                <h3>Cooking Materials</h3>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Donec tincidunt nulla in enim sodales, eu faucibus ipsum egestas.</li>
-                                    <li>Mauris semper mauris quis massa mollis feugiat.</li>
-                                    <li>Cras quis orci eu augue tempor ornare.</li>
-                                    <li>Duis at est non lorem iaculis imperdiet sit amet vitae nisi.</li>
-                                    <li>Sed dignissim velit non purus consequat maximus.</li>
-                                    <li>Praesent convallis eros ac dolor dapibus, vel dictum ante congue.</li>
-                                </ul>
-                            </div>
-                            <img src="{{ asset('assets/images/post_48.jpg') }}" class="img-fluid" alt="">
+
+
                         </div>
-                        <div class="post_share_tag">
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <div class="post_tag_box">
-                                        <ul>
-                                            <li><span>Tags:</span></li>
-                                            <li><a href="#">Flexiaddons</a></li>
-                                            <li><a href="#">Recipe</a></li>
-                                            <li><a href="#">Asian Food</a></li>
-                                            <li><a href="#">Food</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="social_box">
-                                        <ul>
-                                            <li><span>Share:</span></li>
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="post_prev_next">
                             <div class="box">
                                 <a href="#" class="prev"><i class="fas fa-long-arrow-alt-left"></i> Previous</a>
                             </div>
                             <div class="box">
-                                <a href="#"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
+                                <a href="{{ route('blog') }}"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
                             </div>
                             <div class="box">
                                 <a href="#" class="next">Next <i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
-                        </div>
-                        <div class="author_box mb-60">
-                            <img src="{{ asset('assets/images/admin_7.png') }}" class="img-fluid" alt="">
-                            <h5>Author Name</h5>
-                            <h6>Articles Writer</h6>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
                         </div>
                         <div class="related_post pb-60">
                             <div class="row">
@@ -176,13 +118,13 @@
                             <h3>Leave a Comment</h3>
                             <form action="{{ route('article', $post->slug) }}" method="post">
                                 @csrf
-                                <input name="id" type="hidden" value="{{ $post->id }}">
-                                <input name="type" type="hidden" value="TCG\Voyager\Models\Post">
+                                <input name="commentable_id" type="hidden" value="{{ $post->id }}">
+                                <input name="commentable_type" type="hidden" value="TCG\Voyager\Models\Post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form_group">
                                             <label>Comment</label>
-                                            <textarea class="form_control" placeholder="Type" name="message"></textarea>
+                                            <textarea class="form_control" placeholder="Type" name="comment"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

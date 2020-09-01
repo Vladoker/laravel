@@ -10,6 +10,8 @@ use TCG\Voyager\Models\Post;
 class BlogController extends Controller
 {
 
+
+
     public function index()
     {
         $posts = Post::where('status', 'published')->with('comments')->get();
@@ -31,27 +33,21 @@ class BlogController extends Controller
         return view('blogs.article', compact('post', 'comments'));
     }
 
-    public function category($category)
-    {
-        $category = Category::where('slug', $category)->first();
-        $posts = Post::where('category_id', $category->id)->get();
-
-        return view('blogs.article', compact('posts'));
-    }
+//    public function category($category)
+//    {
+//        $category = Category::where('slug', $category)->first();
+//        $posts = Post::where('category_id', $category->id)->get();
+//
+//        return view('blogs.article', compact('posts'));
+//    }
 
     public function store(Request $request){
-        $comment = new Comment();
+        $data = $request->all();
+        $data['status'] = 1;
 
-        $data = $request->only('name', 'email', 'url', 'message', 'id', 'type');
-        $comment->name = $data['name'];
-        $comment->email = $data['email'];
-        $comment->url = $data['url'];
-        $comment->comment = $data['message'];
-        $comment->commentable_id = $data['id'];
-        $comment->commentable_type = $data['type'];
-        $comment->status = 1;
-        $comment->save();
-        return back()->withInput();
+        if(Comment::create($data)){
+            return back()->withInput();
+        }
     }
 
 }

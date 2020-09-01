@@ -38,7 +38,7 @@
                                 <div class="post_content">
                                     <div class="post_meta">
                                         <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
-                                        <span class="time">{{ rand(10, 45) }} min read</span>
+                                        <span class="time">{{ $post->min_read }} min read</span>
                                     </div>
                                     <h3><a href="{{ route('article', $post->slug) }}">{{ $post->title }}</a></h3>
                                     <a href="{{ route('article', $post->slug) }}" class="comments"><i class="fas fa-comments"></i>{{ count($post->comments) }}</a>
