@@ -14,7 +14,7 @@
                 <div class="col-lg-5">
                     <div class="breadcrumb-link">
                         <ul>
-                            <li><a href="#">HOME</a></li>
+                            <li><a href="{{ route('home') }}">HOME</a></li>
                             <li class="active">Blog Details</li>
                         </ul>
                     </div>

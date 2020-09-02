@@ -4,17 +4,17 @@
     <!-- Start olima_banner section -->
     <section class="olima_banner hero_post_v1">
         <div class="hero_post_slide_v1">
+            @foreach($sliderRecipes as $recipe)
             <!-- grid_item -->
             <div class="grid_item">
                 <div class="post_img">
-                    <img src="assets/images/banner_1.jpg" class="img-fluid" alt="">
+                    <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="">
                     <div class="post_overlay">
                         <div class="post_content">
-                            <a href="#" class="cat_btn">Fruits and Salad</a>
-                            <h3><a href="blog-details.html">How To Make Bowl  Of Cereal With sliced Fruits And Spoon </a></h3>
+                            <a href="#" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
+                            <h3><a href="blog-details.html">{{ $recipe->content }}</a></h3>
                             <div class="post_meta">
-                                <span class="eye">975</span>
-                                <span class="love">495</span>
+                                <span class="love">{{ $recipe->likes }}</span>
                                 <span class="comment">127</span>
                             </div>
                         </div>
@@ -22,56 +22,7 @@
                 </div>
             </div>
             <!-- grid_item -->
-            <div class="grid_item">
-                <div class="post_img">
-                    <img src="assets/images/banner_2.jpg" class="img-fluid" alt="">
-                    <div class="post_overlay">
-                        <div class="post_content">
-                            <a href="#" class="cat_btn">Fruits and Salad</a>
-                            <h3><a href="blog-details.html">How To Make Bowl  Of Cereal With sliced Fruits And Spoon </a></h3>
-                            <div class="post_meta">
-                                <span class="eye">975</span>
-                                <span class="love">495</span>
-                                <span class="comment">127</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- grid_item -->
-            <div class="grid_item">
-                <div class="post_img">
-                    <img src="assets/images/banner_3.jpg" class="img-fluid" alt="">
-                    <div class="post_overlay">
-                        <div class="post_content">
-                            <a href="#" class="cat_btn">Fruits and Salad</a>
-                            <h3><a href="blog-details.html">How To Make Bowl  Of Cereal With sliced Fruits And Spoon </a></h3>
-                            <div class="post_meta">
-                                <span class="eye">975</span>
-                                <span class="love">495</span>
-                                <span class="comment">127</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- grid_item -->
-            <div class="grid_item">
-                <div class="post_img">
-                    <img src="assets/images/banner_2.jpg" class="img-fluid" alt="">
-                    <div class="post_overlay">
-                        <div class="post_content">
-                            <a href="#" class="cat_btn">Fruits and Salad</a>
-                            <h3><a href="blog-details.html">How To Make Bowl  Of Cereal With sliced Fruits And Spoon </a></h3>
-                            <div class="post_meta">
-                                <span class="eye">975</span>
-                                <span class="love">495</span>
-                                <span class="comment">127</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <!-- End olima_banner section -->
@@ -113,14 +64,14 @@
                             <div class="grid_item grid_post_big mb-40">
                                 <div class="post_img">
                                     <a href="#">
-                                        <img src="{{ asset('storage/' . $recipes[0]['image'])  }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('storage/' . $recipes->first()->image)  }}" class="img-fluid" alt="">
                                     </a>
                                     <div class="post_overlay">
                                         <div class="post_content">
-                                            <a href="#" class="cat_btn">{{ $recipes[0]->recipe->title }}</a>
-                                            <h3><a href="blog-details.html">{{ $recipes[0]->title }}</a></h3>
+                                            <a href="#" class="cat_btn">{{ $recipes->first()->category_recipe->title }}</a>
+                                            <h3><a href="blog-details.html">{{ $recipes->first()->title }}</a></h3>
                                             <div class="post_meta">
-                                                <span class="love">{{ $recipes[0]['likes'] }}</span>
+                                                <span class="love">{{ $recipes->first()->likes }}</span>
                                                 <span class="comment">127</span>
                                             </div>
                                         </div>
@@ -135,7 +86,7 @@
                                     <img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="">
                                     <div class="post_overlay">
                                         <div class="post_tag">
-                                            <a href="#" class="cat_btn">{{ $recipes[$i]->recipe->title }}</a>
+                                            <a href="#" class="cat_btn">{{ $recipes[$i]->category_recipe->title }}</a>
                                             <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
                                         </div>
                                     </div>
@@ -345,11 +296,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="button_box">
-                        <a href="#" class="olima_btn">All Vegan Recipes</a>
+
                     </div>
                 </div>
             </div>
             <div class="row">
+
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="grid_item mb-40">
                         <div class="post_img">
@@ -370,46 +322,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="grid_item mb-40">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/post_9.jpg" class="img-fluid" alt=""></a>
-                            <div class="post_overlay">
-                                <div class="post_tag">
-                                    <a href="#" class="cat_btn">Vegan and Fruits</a>
-                                    <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Mint-Pomegranate Pro-Salad</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="grid_item mb-40">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/post_10.jpg" class="img-fluid" alt=""></a>
-                            <div class="post_overlay">
-                                <div class="post_tag">
-                                    <a href="#" class="cat_btn">Vegan and Fruits</a>
-                                    <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Mint-Pomegranate Pro-Salad</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </section>
@@ -425,19 +339,20 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($trendingRecipes as $recipe)
                 <div class="col-lg-6">
                     <div class="grid_item mb-40">
                         <div class="post_img">
-                            <a href="#"><img src="assets/images/post_11.jpg" class="img-fluid" alt=""></a>
+                            <a href="#"><img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt=""></a>
                             <div class="post_overlay">
                                 <div class="post_tag">
-                                    <a href="#" class="cat_btn">Vegan and Fruits</a>
+                                    <a href="#" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
                                     <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
                                 </div>
                                 <div class="post_content">
-                                    <h3><a href="#">Garlic Butter Chicken Bites (20-Minute Recipe!)</a></h3>
+                                    <h3><a href="#">{{ $recipe->content }}</a></h3>
                                     <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
+                                        <span class="calender"><a href="#">{{ $recipe->created_at->format('l j, Y') }}</a></span>
                                         <span class="comment">127</span>
                                     </div>
                                 </div>
@@ -445,26 +360,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="grid_item mb-40">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/post_12.jpg" class="img-fluid" alt=""></a>
-                            <div class="post_overlay">
-                                <div class="post_tag">
-                                    <a href="#" class="cat_btn">Vegan and Fruits</a>
-                                    <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Garlic Butter Chicken Bites (20-Minute Recipe!)</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\Post;
 
 class BlogController extends Controller
@@ -23,6 +22,8 @@ class BlogController extends Controller
         return view('blogs.blogs', compact('posts', 'popularPosts'));
     }
 
+//    public function category($category)
+
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
@@ -32,8 +33,15 @@ class BlogController extends Controller
 
         return view('blogs.article', compact('post', 'comments'));
     }
+    public function showRecipe($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $comments = $post->comments->filter(function ($comment){
+            return $comment['status'] == 1;
+        });
 
-//    public function category($category)
+        return view('blogs.article', compact('post', 'comments'));
+    }
 //    {
 //        $category = Category::where('slug', $category)->first();
 //        $posts = Post::where('category_id', $category->id)->get();

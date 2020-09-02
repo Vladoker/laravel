@@ -7,13 +7,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="breadcrumb-title">
-                        <h1>About Me</h1>
+                    <h1>{{ setting('about.hero_title') }}</h1>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="breadcrumb-link">
                         <ul>
-                            <li><a href="#">HOME</a></li>
+                            <li><a href="{{ route('home') }}">HOME</a></li>
                             <li class="active">ABOUT ME</li>
                         </ul>
                     </div>
@@ -28,7 +28,7 @@
             <div class="row pb-130">
                 <div class="col-lg-6">
                     <div class="olima_img">
-                        <img src="assets/images/about_4.jpg" class="img-fluid" alt="">
+                    <img src="{{Voyager::image(setting('about.images1')) }}" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-lg-3">

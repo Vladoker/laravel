@@ -21,18 +21,39 @@ class FrontController extends Controller
         $recipes = Recipe::where('status', 1)->
         orderBy('created_at', 'desc')->
         take(7)->
-        with('recipe')->
+        with('category_recipe')->
         get();
+
+        $vegetarianRecipes = CategoryRecipe::where('title','Vegan and Fruits')->first()->recipes->take(3);
+
+        $trendingRecipes =  Recipe::where([
+            ['status','=',1],
+            ['trending','=',1]
+        ])->
+        where('trending', 1)->
+        take(3)->
+        get();
+
+
+
 
         $sliderRecipes = Recipe::where('status', 1)->
         where('show_index', 1)->
         orderBy('order')->
         take(10)->
-        with('recipe')->
+        with('category_recipe')->
         get();
 
-//        dd($sliderRecipes);
-        return view('home', compact('categories','recipes','sliderRecipes'));
+        $recipes_cateogory = Recipe::whereHas('category_recipe', function($query){
+            $query->where('title', 'Vegan and Fruits');
+        })->get();
+
+//        $recipes_cateogory = Recipe::with('category_recipe')->
+//
+//        get()->where('category_recipe.title', 'Vegan and Fruits');
+//
+        dd($recipes_cateogory);
+        return view('home', compact('categories','recipes', 'sliderRecipes', 'trendingRecipes', 'vegetarianRecipes'));
     }
 
     public function about(){

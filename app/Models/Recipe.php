@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Recipe extends Model 
+class Recipe extends Model
 {
-    public function recipe()
+
+    public function category_recipe()
     {
         return $this->belongsTo(CategoryRecipe::class, 'categorie_recipe_id');
     }
