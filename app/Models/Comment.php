@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    //protected $keyType = 'string';
-    public $guarded = [''];
+    protected $guarded = [];
 
     public function commentable()
     {

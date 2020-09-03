@@ -6,10 +6,12 @@
     <!-- All Meta -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
+    <meta name="description" content="@yield('meta_desc')">
+    <meta name="author" content="@yield('meta_author')">
+    <meta name="keywords" content="@yield('meta_keywords')">
     <meta name="viewport" content="wid th=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- page title -->
-    <title>{{ setting('site.title') }}</title>
+    <title>@yield('title')</title>
     <!------ Favicon Icon ------->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!-- All css -->
@@ -146,14 +148,14 @@
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <div class="widget_box about_box">
-                        <a href="{{ route('home') }}"><img src="assets/images/logo_2.png" class="img-fluid" alt=""></a>
-                        <p>Proin ac quam et lectus vestibulum blandit. Nunc maximus nibh at placerat tincidunt. Nam sem lacus, ornare non ante sed, ultricies fringilla massa. Ut congue</p>
+                        <a href="{{ route('home') }}"><img src="{{ asset('storage/'. setting('site.logo')) }}" class="img-fluid" alt=""></a>
+                        <p>{{ setting('footer.desc') }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="widget_box copyright_box">
-                        <h6>Cook and Blog with <i class="fas fa-heart"></i> by Apex Nusrat</h6>
-                        <p>© 2020 TastyTreats all rights reserved.</p>
+                        <h6>Cook and Blog with <i class="fas fa-heart"></i> by Vladislav</h6>
+                        <p>{{ setting('footer.Copywriting') }}</p>
                     </div>
                 </div>
             </div>

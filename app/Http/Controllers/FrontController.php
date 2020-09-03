@@ -14,45 +14,50 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $categories = CategoryRecipe::whereNotNull('image')->
+        $categories = CategoryRecipe::
+        whereNotNull('image')->
         take(10)->
         get();
 
-        $recipes = Recipe::where('status', 1)->
+
+        $recipes = Recipe::
+        where('status', 1)->
         orderBy('created_at', 'desc')->
         take(7)->
         with('category_recipe')->
         get();
 
-        $vegetarianRecipes = CategoryRecipe::where('title','Vegan and Fruits')->first()->recipes->take(3);
+        $vegetarianRecipes = CategoryRecipe::
+        where('title','Vegan and Fruits')->
+        first()->
+        recipes->
+        take(3);
+//        $recipes_cateogory = Recipe::whereHas('category_recipe', function($query){
+//            $query->where('title', 'Vegan and Fruits');
+//        })->get();
 
-        $trendingRecipes =  Recipe::where([
+
+        $trendingRecipes =  Recipe::
+        where([
             ['status','=',1],
             ['trending','=',1]
         ])->
-        where('trending', 1)->
-        take(3)->
+        take(2)->
         get();
 
 
-
-
-        $sliderRecipes = Recipe::where('status', 1)->
-        where('show_index', 1)->
+        $sliderRecipes = Recipe::
+        where([
+            ['status','=',1],
+            ['show_index','=',1]
+        ])->
         orderBy('order')->
         take(10)->
         with('category_recipe')->
         get();
 
-        $recipes_cateogory = Recipe::whereHas('category_recipe', function($query){
-            $query->where('title', 'Vegan and Fruits');
-        })->get();
 
-//        $recipes_cateogory = Recipe::with('category_recipe')->
-//
-//        get()->where('category_recipe.title', 'Vegan and Fruits');
-//
-        dd($recipes_cateogory);
+
         return view('home', compact('categories','recipes', 'sliderRecipes', 'trendingRecipes', 'vegetarianRecipes'));
     }
 

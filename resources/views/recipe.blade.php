@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title'){{ $post->meta_title }}@endsection
-@section('meta_desc'){{ $post->meta_desc }}@endsection
+@section('title'){{ $recipe->meta_title }}@endsection
+@section('meta_desc'){{ $recipe->meta_desc }}@endsection
 
 @section('content')
     <!-- Start olima_breadcrumb section -->
@@ -32,25 +32,17 @@
                 <div class="col-lg-9">
                     <div class="blog_details_wrapper">
                         <div class="post_img">
-                            <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="{{ $post->slug }}">
+                            <img src="{{ asset('storage/'. $recipe->image) }}" class="img-fluid" alt="{{ $recipe->slug }}">
                         </div>
                         <div class="post_content pb-70">
-                            <h3>{{ $post->title }}</h3>
+                            <h3>{{ $recipe->title }}</h3>
                             <div class="post_meta">
-                                <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
+                                <span class="calender">{{ $recipe->created_at->format('l j, Y') }}</span>
                                 <span class="comment">0 Comment</span>
-                                <span class="time">{{ $post->min_read }} min read</span>
                             </div>
-                                <div class="para_1">
-                                    {!! $post->body !!}
-                                </div>
-
-
-                            <blockquote>
-                                <p>{{ $post->excerpt }}</p>
-                            </blockquote>
-
-
+                            <div class="para_1">
+                                {!! $recipe->content !!}
+                            </div>
                         </div>
 
                         <div class="post_prev_next">
@@ -58,7 +50,7 @@
                                 <a href="#" class="prev"><i class="fas fa-long-arrow-alt-left"></i> Previous</a>
                             </div>
                             <div class="box">
-                                <a href="{{ route('blog') }}"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
                             </div>
                             <div class="box">
                                 <a href="#" class="next">Next <i class="fas fa-long-arrow-alt-right"></i></a>
@@ -85,11 +77,10 @@
 
                         </div>
                         <div class="comment_form">
-
-                            <form action="{{ route('article', $post->slug) }}" method="post">
+                            <form action="{{ route('createRecipe') }}" method="post">
                                 @csrf
-                                <input name="commentable_id" type="hidden" value="{{ $post->id }}">
-                                <input name="commentable_type" type="hidden" value="TCG\Voyager\Models\Post">
+                                <input name="commentable_id" type="hidden" value="{{ $recipe->id }}">
+                                <input name="commentable_type" type="hidden" value="App\Models\Recipe">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form_group">
@@ -145,42 +136,33 @@
                         </div>
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="{{ asset('assets/images/thumb_1.jpg') }}" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
+                            @for($i = 0; $i < count($recipes); $i++)
+                                <div class="single_post d-flex align-items-center">
+                                    <div class="post_img">
+                                        <a href="{{ route('recipe', $recipes[$i]->slug) }}">
+                                            <img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="{{ $recipes[$i]->slug }}">
+                                        </a>
+                                    </div>
+                                    <div class="post_content">
+                                        <h3>
+                                            <a href="{{ route('recipe', $recipes[$i]->slug) }}">
+                                                {{ $recipes[$i]->category_recipe->title }}
+                                            </a>
+                                        </h3>
+                                        <div class="post_meta">
+                                            <span>
+                                                <a href="{{ route('article', $recipes[$i]->slug) }}">
+                                                    {{ $recipes[$i]->created_at->format('l j, Y') }}
+                                                </a>
+                                            </span>
+                                            <span class="comment">{{ count($recipes[$i]->comments) }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="{{ asset('assets/images/thumb_2.jpg') }}" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Chicken Tortilla Soup</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="{{ asset('assets/images/thumb_3.jpg') }}" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
-                                    <div class="post_meta">
-                                        <span><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
+                                @if($i == 2)
+                                    @break
+                                @endif
+                            @endfor
                         </div>
                         <div class="widget_box booking_widget mb-45">
                             <div class="title">

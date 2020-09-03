@@ -115,15 +115,11 @@
                         <div class="widget_box categories_widget mb-40">
                             <h4>Categories</h4>
                             <ul>
-                                <li class="active"><a href="#">All Categories</a></li>
-                                <li><a href="#">Images Posts</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Photograph</a></li>
-                                <li><a href="#">Recipe</a></li>
-                                <li><a href="#">Asian Food</a></li>
-                                <li><a href="#">Lifestyle</a></li>
-                                <li><a href="#">Tour</a></li>
-                                <li><a href="#">Chines Food</a></li>
+                                @foreach($categories as $categorie)
+                                    <li>
+                                        <a href="#">{{ $categorie->title }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="widget_box tags_widget mb-40">

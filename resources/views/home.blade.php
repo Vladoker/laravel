@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@section('title'){{ setting('site.title') }}@endsection
+@section('meta_desc'){{ setting('site.description') }}@endsection
 @section('content')
     <!-- Start olima_banner section -->
     <section class="olima_banner hero_post_v1">
@@ -11,8 +12,10 @@
                     <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="">
                     <div class="post_overlay">
                         <div class="post_content">
-                            <a href="#" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
-                            <h3><a href="blog-details.html">{{ $recipe->content }}</a></h3>
+                            <a href="{{ route('recipe', $recipe->slug) }}" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
+                            <h3>
+                                <a href="{{ route('recipe', $recipe->slug) }}">{{ $recipe->content }}</a>
+                            </h3>
                             <div class="post_meta">
                                 <span class="love">{{ $recipe->likes }}</span>
                                 <span class="comment">127</span>
@@ -63,13 +66,13 @@
                         <div class="col-lg-12">
                             <div class="grid_item grid_post_big mb-40">
                                 <div class="post_img">
-                                    <a href="#">
+                                    <a href="{{ route('recipe', $recipes->first()->slug) }}">
                                         <img src="{{ asset('storage/' . $recipes->first()->image)  }}" class="img-fluid" alt="">
                                     </a>
                                     <div class="post_overlay">
                                         <div class="post_content">
-                                            <a href="#" class="cat_btn">{{ $recipes->first()->category_recipe->title }}</a>
-                                            <h3><a href="blog-details.html">{{ $recipes->first()->title }}</a></h3>
+                                            <a href="{{ route('recipe', $recipes->first()->slug) }}" class="cat_btn">{{ $recipes->first()->category_recipe->title }}</a>
+                                            <h3><a href="{{ route('recipe', $recipes->first()->slug) }}">{{ $recipes->first()->title }}</a></h3>
                                             <div class="post_meta">
                                                 <span class="love">{{ $recipes->first()->likes }}</span>
                                                 <span class="comment">127</span>
@@ -79,29 +82,33 @@
                                 </div>
                             </div>
                         </div>
-                        @for($i = 1; $i < count($recipes) ; $i++)
-                        <div class="col-lg-6">
-                            <div class="grid_item mb-40">
-                                <div class="post_img">
-                                    <img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="">
-                                    <div class="post_overlay">
-                                        <div class="post_tag">
-                                            <a href="#" class="cat_btn">{{ $recipes[$i]->category_recipe->title }}</a>
-                                            <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
+                        @php $recipes->shift() @endphp
+                        @foreach($recipes as $recipe)
+                            <div class="col-lg-6">
+                                <div class="grid_item mb-40">
+                                    <div class="post_img">
+                                        <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="">
+                                        <div class="post_overlay">
+                                            <div class="post_tag">
+                                                <a href="{{ route('recipe', $recipe->slug)  }}" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
+                                                <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post_content">
+                                        <h3><a href="{{ route('recipe', $recipe->slug) }}">{{ $recipe->title }}</a></h3>
+                                        <div class="post_meta">
+                                            <span class="calender">
+                                                <a href="{{ route('recipe', $recipe->slug) }}">
+                                                    {{ $recipe->created_at->format('l j, Y') }}
+                                                </a>
+                                            </span>
+                                            <span class="comment">127</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="post_content">
-                                    <h3><a href="#">{{ $recipes[$i]->title }}</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">{{ $recipes[$i]->created_at->format('l j, Y') }}</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        @endfor
-
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -135,42 +142,25 @@
                             </div>
                         </div>
                         <div class="widget_box featured_post">
+                            @for($i = 0; $i < count($recipes); $i++)
+
                             <div class="single_post d-flex align-items-center">
                                 <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_1.jpg" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('recipe', $recipes[$i]->slug)  }}"><img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="{{ $recipes[$i]->slug }}"></a>
                                 </div>
                                 <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
+                                    <h3><a href="{{ route('recipe', $recipes[$i]->slug) }}">{{ $recipes[$i]->category_recipe->title }}</a></h3>
                                     <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
+                                        <span class="calender"><a href="{{ route('recipe', $recipes[$i]->slug) }}">{{ $recipes[$i]->created_at->format('l j, Y') }}</a></span>
                                         <span class="comment">127</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_2.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Chicken Tortilla Soup</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="#"><img src="assets/images/thumb_3.jpg" class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Cream Cheese Frosting</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
-                                    </div>
-                                </div>
-                            </div>
+                                @if($i == 2)
+                                    @break
+                                @endif
+                            @endfor
+
                         </div>
                         <div class="widget_box newsletter_widget">
                             <img src="assets/images/icon_1.png" alt="">
@@ -301,27 +291,38 @@
                 </div>
             </div>
             <div class="row">
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="grid_item mb-40">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/post_8.jpg" class="img-fluid" alt=""></a>
-                            <div class="post_overlay">
-                                <div class="post_tag">
-                                    <a href="#" class="cat_btn">Vegan and Fruits</a>
-                                    <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="#">Mint-Pomegranate Pro-Salad</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="#">April 27, 2020</a></span>
-                                        <span class="comment">127</span>
+                @foreach($vegetarianRecipes as $recipe)
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="grid_item mb-40">
+                            <div class="post_img">
+                                <a href="{{ route('recipe', $recipe->slug)  }}">
+                                    <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="{{ $recipe->slug }}">
+                                </a>
+                                <div class="post_overlay">
+                                    <div class="post_tag">
+                                        <a href="{{ route('recipe', $recipe->slug) }}" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
+                                        <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
+                                    </div>
+                                    <div class="post_content">
+                                        <h3>
+                                            <a href="{{ route('recipe', $recipe->slug) }}">
+                                                {{ $recipe->title }}
+                                            </a>
+                                        </h3>
+                                        <div class="post_meta">
+                                            <span class="calender">
+                                                <a href="{{ route('recipe', $recipe->slug) }}">
+                                                    {{ $recipe->created_at->format('l j, Y') }}
+                                                </a>
+                                            </span>
+                                            <span class="comment">127</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
 
             </div>
@@ -343,16 +344,30 @@
                 <div class="col-lg-6">
                     <div class="grid_item mb-40">
                         <div class="post_img">
-                            <a href="#"><img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt=""></a>
+                            <a href="{{ route('recipe', $recipe->slug) }}">
+                                <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="">
+                            </a>
                             <div class="post_overlay">
                                 <div class="post_tag">
-                                    <a href="#" class="cat_btn">{{ $recipe->category_recipe->title }}</a>
-                                    <a href="#" class="love_btn"><i class="fas fa-heart"></i></a>
+                                    <a href="{{ route('recipe', $recipe->slug) }}" class="cat_btn">
+                                        {{ $recipe->category_recipe->title }}
+                                    </a>
+                                    <a href="#" class="love_btn">
+                                        <i class="fas fa-heart"></i>
+                                    </a>
                                 </div>
                                 <div class="post_content">
-                                    <h3><a href="#">{{ $recipe->content }}</a></h3>
+                                    <h3>
+                                        <a href="{{ route('recipe', $recipe->slug) }}">
+                                            {{ $recipe->content }}
+                                        </a>
+                                    </h3>
                                     <div class="post_meta">
-                                        <span class="calender"><a href="#">{{ $recipe->created_at->format('l j, Y') }}</a></span>
+                                        <span class="calender">
+                                            <a href="{{ route('recipe', $recipe->slug) }}">
+                                                {{ $recipe->created_at->format('l j, Y') }}
+                                            </a>
+                                        </span>
                                         <span class="comment">127</span>
                                     </div>
                                 </div>

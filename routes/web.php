@@ -9,6 +9,9 @@ Route::get('/contacts', 'FrontController@contacts')->name('contacts');
 Route::get('/blog', 'BlogController@index')->name('blog');
 Route::get('/article/{slug}', 'BlogController@show')->name('article');
 Route::post('/article/{slug}', 'BlogController@store')->name('article');
+Route::get('/recipe/{slug}', 'RecipeController@show')->name('recipe');
+
+Route::post('/recipe', 'RecipeController@store')->name('createRecipe');
 
 Route::get('/404', function(){ return view('404'); })->name('404');
 
