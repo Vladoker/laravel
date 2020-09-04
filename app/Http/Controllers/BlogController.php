@@ -9,20 +9,6 @@ use TCG\Voyager\Models\Post;
 
 class BlogController extends Controller
 {
-
-    private function getPosts() {
-        return Post::where('status', 'published')->with('comments')->get();
-    }
-    private function getFeaturedPosts(){
-      return $this->getPosts()->filter(function ($post){
-            return $post['featured'] == 1;
-      });
-    }
-    private function getCategories() {
-        return CategoryPost::get();
-    }
-
-
     public function index()
     {
         $posts = $this->getPosts();
@@ -31,8 +17,6 @@ class BlogController extends Controller
 
         return view('blogs.blogs', compact('posts', 'popularPosts', 'categories'));
     }
-
-
 
     public function show($slug)
     {
@@ -55,6 +39,19 @@ class BlogController extends Controller
         if(Comment::create($data)){
             return back()->withInput();
         }
+    }
+
+    private function getPosts() {
+        return Post::where('status', 'published')->with('comments','myCategory')->get();
+    }
+
+    private function getFeaturedPosts(){
+        return $this->getPosts()->filter(function ($post){
+            return $post['featured'] == 1;
+        });
+    }
+    private function getCategories() {
+        return CategoryPost::with('posts')->get();
     }
 
 }

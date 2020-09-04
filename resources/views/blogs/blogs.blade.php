@@ -33,7 +33,18 @@
                             <div class="col-lg-6">
                             <div class="grid_item mb-50">
                                 <div class="post_img">
-                                    <a href="{{ route('article', $post->slug) }}"><img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->slug }}"></a>
+                                    <a href="{{ route('article', $post->slug) }}">
+{{--                                        @if(substr_count($post->image,'http:') >)--}}
+                                        @php
+                                            if(file_exists(public_path('/storage/' . $post->image))){
+                                                $image = Voyager::image($post->image);
+                                            }else{
+                                                $image = $post->image;
+                                            }
+                                        @endphp
+                                        <img src="{{ $image }}" class="img-fluid" alt="{{ $post->slug }}">
+{{--                                        @endif--}}
+                                    </a>
                                 </div>
                                 <div class="post_content">
                                     <div class="post_meta">

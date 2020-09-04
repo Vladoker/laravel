@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        factory(\App\Models\CategoryRecipe::class, 5)->create();
+        factory(TCG\Voyager\Models\Post::class, 3)->create();
     }
 }

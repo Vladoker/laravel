@@ -8,6 +8,6 @@ class CategoryPost extends Model
 {
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(\TCG\Voyager\Models\Post::class, 'category_id');
     }
 }

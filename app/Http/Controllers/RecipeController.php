@@ -12,7 +12,8 @@ class RecipeController extends Controller
 
     public function show($slug)
     {
-        $recipe = Recipe::where('slug', $slug)->firstOrFail();
+        $recipe = Recipe::bySlug($slug)->firstOrFail();
+
         $comments = $recipe->comments->filter(function ($comment){
             return $comment['status'] == 1;
         });
@@ -29,10 +30,8 @@ class RecipeController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->all();
-        $data['status'] = 1;
-        if(Comment::create($data)){
-            return back()->withInput();
-        }
+        Comment::create($request->all());
+
+        return redirect()->back();
     }
 }
