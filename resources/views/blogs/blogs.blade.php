@@ -135,24 +135,8 @@
                                 <li><a href="#">Photograph</a></li>
                             </ul>
                         </div>
-                        <div class="widget_box add_widget mb-50">
-                            <div class="add_img">
-                                <a href="#"><img src="assets/images/add_1.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="widget_box newsletter_widget">
-                            <img src="assets/images/icon_1.png" alt="">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter & stay update</p>
-                            <form>
-                                <div class="form_group">
-                                    <input type="email" class="form_control" placeholder="Enter your email" name="email" required>
-                                </div>
-                                <div class="form_group">
-                                    <button class="olima_btn sidebar_btn">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
+
+
                     </div>
                 </div>
             </div>

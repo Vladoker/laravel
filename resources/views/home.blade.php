@@ -103,7 +103,7 @@
                                                     {{ $recipe->created_at->format('l j, Y') }}
                                                 </a>
                                             </span>
-                                            <span class="comment">127</span>
+                                            <span class="comment">{{ count($recipe->comments) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -142,39 +142,31 @@
                             </div>
                         </div>
                         <div class="widget_box featured_post">
-                            @for($i = 0; $i < count($recipes); $i++)
-
-                            <div class="single_post d-flex align-items-center">
-                                <div class="post_img">
-                                    <a href="{{ route('recipe', $recipes[$i]->slug)  }}"><img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="{{ $recipes[$i]->slug }}"></a>
-                                </div>
-                                <div class="post_content">
-                                    <h3><a href="{{ route('recipe', $recipes[$i]->slug) }}">{{ $recipes[$i]->category_recipe->title }}</a></h3>
-                                    <div class="post_meta">
-                                        <span class="calender"><a href="{{ route('recipe', $recipes[$i]->slug) }}">{{ $recipes[$i]->created_at->format('l j, Y') }}</a></span>
-                                        <span class="comment">127</span>
+                            @foreach($recipes as $index => $recipe)
+                                <div class="single_post d-flex align-items-center">
+                                    <div class="post_img">
+                                        <a href="{{ route('recipe', $recipe->slug)  }}">
+                                            <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="{{ $recipe->slug }}">
+                                        </a>
+                                    </div>
+                                    <div class="post_content">
+                                        <h3><a href="{{ route('recipe', $recipe->slug) }}">{{ $recipe->category_recipe->title }}</a></h3>
+                                        <div class="post_meta">
+                                            <span class="calender">
+                                                <a href="{{ route('recipe', $recipe->slug) }}">
+                                                    {{ $recipe->created_at->format('l j, Y') }}
+                                                </a>
+                                            </span>
+                                            <span class="comment">{{ count($recipe->comments) }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                @if($i == 2)
+                                @if($index == 2)
                                     @break
                                 @endif
-                            @endfor
+                            @endforeach
+                        </div>
 
-                        </div>
-                        <div class="widget_box newsletter_widget">
-                            <img src="assets/images/icon_1.png" alt="">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter & stay update</p>
-                            <form>
-                                <div class="form_group">
-                                    <input type="email" class="form_control" placeholder="Enter your email" name="email" required>
-                                </div>
-                                <div class="form_group">
-                                    <button class="olima_btn sidebar_btn">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>

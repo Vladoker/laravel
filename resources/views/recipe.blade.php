@@ -136,33 +136,29 @@
                         </div>
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
-                            @for($i = 0; $i < count($recipes); $i++)
+                            @foreach($recipes as $index => $recipe)
                                 <div class="single_post d-flex align-items-center">
                                     <div class="post_img">
-                                        <a href="{{ route('recipe', $recipes[$i]->slug) }}">
-                                            <img src="{{ asset('storage/' . $recipes[$i]->image) }}" class="img-fluid" alt="{{ $recipes[$i]->slug }}">
+                                        <a href="{{ route('recipe', $recipe->slug)  }}">
+                                            <img src="{{ asset('storage/' . $recipe->image) }}" class="img-fluid" alt="{{ $recipe->slug }}">
                                         </a>
                                     </div>
                                     <div class="post_content">
-                                        <h3>
-                                            <a href="{{ route('recipe', $recipes[$i]->slug) }}">
-                                                {{ $recipes[$i]->category_recipe->title }}
-                                            </a>
-                                        </h3>
+                                        <h3><a href="{{ route('recipe', $recipe->slug) }}">{{ $recipe->category_recipe->title }}</a></h3>
                                         <div class="post_meta">
-                                            <span>
-                                                <a href="{{ route('article', $recipes[$i]->slug) }}">
-                                                    {{ $recipes[$i]->created_at->format('l j, Y') }}
+                                            <span class="calender">
+                                                <a href="{{ route('recipe', $recipe->slug) }}">
+                                                    {{ $recipe->created_at->format('l j, Y') }}
                                                 </a>
                                             </span>
-                                            <span class="comment">{{ count($recipes[$i]->comments) }}</span>
+                                            <span class="comment">{{ count($recipe->comments) }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                @if($i == 2)
+                                @if($index == 2)
                                     @break
                                 @endif
-                            @endfor
+                            @endforeach
                         </div>
                         <div class="widget_box booking_widget mb-45">
                             <div class="title">
@@ -174,15 +170,9 @@
                         <div class="widget_box categories_widget mb-40">
                             <h4>Categories</h4>
                             <ul>
-                                <li class="active"><a href="#">All Categories</a></li>
-                                <li><a href="#">Images Posts</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Photograph</a></li>
-                                <li><a href="#">Recipe</a></li>
-                                <li><a href="#">Asian Food</a></li>
-                                <li><a href="#">Lifestyle</a></li>
-                                <li><a href="#">Tour</a></li>
-                                <li><a href="#">Chines Food</a></li>
+                                @foreach($categories as $categorie)
+                                <li><a href="#">{{ $categorie->title }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="widget_box tags_widget mb-40">
@@ -203,19 +193,7 @@
                                 <a href="#"><img src="assets/images/add_1.jpg" class="img-fluid" alt=""></a>
                             </div>
                         </div>
-                        <div class="widget_box newsletter_widget">
-                            <img src="assets/images/icon_1.png" alt="">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to our newsletter & stay update</p>
-                            <form>
-                                <div class="form_group">
-                                    <input type="email" class="form_control" placeholder="Enter your email" name="email" required>
-                                </div>
-                                <div class="form_group">
-                                    <button class="olima_btn sidebar_btn">Subscribe</button>
-                                </div>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
             </div>

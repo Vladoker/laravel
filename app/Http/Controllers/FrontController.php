@@ -24,7 +24,7 @@ class FrontController extends Controller
         where('status', 1)->
         orderBy('created_at', 'desc')->
         take(7)->
-        with('category_recipe')->
+        with('category_recipe', 'comments')->
         get();
 
         $vegetarianRecipes = CategoryRecipe::

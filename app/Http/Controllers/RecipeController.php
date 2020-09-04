@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryRecipe;
 use App\Models\Comment;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
@@ -21,8 +22,10 @@ class RecipeController extends Controller
             ['featured', '=', 1]
         ])->take(3)->get();
 
+        $categories = CategoryRecipe::where('status', 1)->get();
 
-        return view('recipe', compact('recipe', 'comments','recipes'));
+
+        return view('recipe', compact('recipe', 'comments','recipes','categories'));
     }
 
     public function store(Request $request){

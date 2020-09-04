@@ -10,16 +10,24 @@ use TCG\Voyager\Models\Post;
 class BlogController extends Controller
 {
 
+    private function getPosts() {
+        return Post::where('status', 'published')->with('comments')->get();
+    }
+    private function getFeaturedPosts(){
+      return $this->getPosts()->filter(function ($post){
+            return $post['featured'] == 1;
+      });
+    }
+    private function getCategories() {
+        return CategoryPost::get();
+    }
 
 
     public function index()
     {
-        $posts = Post::where('status', 'published')->with('comments')->get();
-        $popularPosts =  $posts->filter(function ($post){
-            return $post['featured'] == 1;
-        });
-
-        $categories = CategoryPost::take(5)->get();
+        $posts = $this->getPosts();
+        $popularPosts = $this->getFeaturedPosts();
+        $categories = $this->getCategories();
 
         return view('blogs.blogs', compact('posts', 'popularPosts', 'categories'));
     }
@@ -32,8 +40,11 @@ class BlogController extends Controller
         $comments = $post->comments->filter(function ($comment){
             return $comment['status'] == 1;
         });
+        $categories = $this->getCategories();
 
-        return view('blogs.article', compact('post', 'comments'));
+        $popularPosts = $this->getFeaturedPosts();
+
+        return view('blogs.article', compact('post', 'comments', 'categories','popularPosts'));
     }
 
 
