@@ -32,13 +32,20 @@
                 <div class="col-lg-9">
                     <div class="blog_details_wrapper">
                         <div class="post_img">
-                            <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="{{ $post->slug }}">
+                            @php
+                                if(file_exists(public_path('/storage/' . $post->image))){
+                                    $image = Voyager::image($post->image);
+                                }else{
+                                    $image = $post->image;
+                                }
+                            @endphp
+                            <img src="{{ $image }}" class="img-fluid" alt="{{ $post->slug }}">
                         </div>
                         <div class="post_content pb-70">
                             <h3>{{ $post->title }}</h3>
                             <div class="post_meta">
                                 <span class="calender">{{ $post->created_at->format('l j, Y') }}</span>
-                                <span class="comment">0 Comment</span>
+                                <span class="comment">{{ count($comments) }}</span>
                                 <span class="time">{{ $post->min_read }} min read</span>
                             </div>
                                 <div class="para_1">
@@ -53,17 +60,7 @@
 
                         </div>
 
-                        <div class="post_prev_next">
-                            <div class="box">
-                                <a href="#" class="prev"><i class="fas fa-long-arrow-alt-left"></i> Previous</a>
-                            </div>
-                            <div class="box">
-                                <a href="{{ route('blog') }}"><img src="{{ asset('assets/images/icon.png') }}" alt=""></a>
-                            </div>
-                            <div class="box">
-                                <a href="#" class="next">Next <i class="fas fa-long-arrow-alt-right"></i></a>
-                            </div>
-                        </div>
+
 
                         <div class="comment_area pt-50">
                             @if(count($comments) != 0)
@@ -127,22 +124,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="olima_sidebar sidebar_v1">
-                        <div class="widget_box about_box mb-45">
-                            <div class="about_img">
-                                <img src="{{ asset('assets/images/about_1.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="about_content">
-                                <h4>Hi, I am Apex!</h4>
-                                <p>Loves nature and healthy food, and good coffee. Don't hesitate</p>
-                                <ul class="social_link">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                            <a href="#" class="olima_btn">Learn More</a>
-                        </div>
+
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
                             @foreach($popularPosts as $post)
@@ -170,13 +152,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="widget_box booking_widget mb-45">
-                            <div class="title">
-                                <h3>Cook Book</h3>
-                            </div>
-                            <img src="{{ asset('assets/images/book_1.jpg') }}" class="img-fluid" alt="">
-                            <a href="#" class="olima_btn">Get The Book</a>
-                        </div>
+
                         <div class="widget_box categories_widget mb-40">
                             <h4>Categories</h4>
                             <ul>
@@ -187,19 +163,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="widget_box tags_widget mb-40">
-                            <h4>Tags</h4>
-                            <ul>
-                                <li><a href="#">Images Posts</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Asian Food</a></li>
-                                <li><a href="#">Tour</a></li>
-                                <li><a href="#">Recipe</a></li>
-                                <li><a href="#">Food</a></li>
-                                <li><a href="#">Photograph</a></li>
-                            </ul>
-                        </div>
+
                         <div class="widget_box add_widget mb-50">
                             <div class="add_img">
                                 <a href="#"><img src="assets/images/add_1.jpg" class="img-fluid" alt=""></a>

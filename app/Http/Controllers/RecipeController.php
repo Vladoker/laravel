@@ -13,25 +13,30 @@ class RecipeController extends Controller
     public function show($slug)
     {
         $recipe = Recipe::bySlug($slug)->firstOrFail();
+        $recipe->eye = ++$recipe->eye;
+        $recipe->save();
 
         $comments = $recipe->comments->filter(function ($comment){
             return $comment['status'] == 1;
         });
 
-        $recipes = Recipe::where([
-            ['status','=', 1],
-            ['featured', '=', 1]
-        ])->take(3)->get();
+        $recipes = Recipe::active()->where('featured',  1)->take(3)->get();
 
-        $categories = CategoryRecipe::where('status', 1)->get();
-
+        $categories = CategoryRecipe::active()->get();
 
         return view('recipe', compact('recipe', 'comments','recipes','categories'));
     }
 
     public function store(Request $request){
-        Comment::create($request->all());
 
+        $validatedData = $request->validate([
+            'name' => 'required|max:50',
+            'comment' => 'required|max:500',
+            'email' => 'email address',
+            'url' => 'max:255',
+        ]);
+
+        Comment::create($validatedData);
         return redirect()->back();
     }
 }

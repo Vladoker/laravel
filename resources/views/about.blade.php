@@ -61,20 +61,7 @@
                 </div>
             </div>
             <div class="row pb-140">
-                <div class="col-lg-12">
-                    <div class="grid_item">
-                        <div class="post_img">
-                            <img src="assets/images/video_11.jpg" class="img-fluid" alt="">
-                            <div class="post_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                        </div>
-                        <div class="post_content">
-                            <h3><a href="#">Nunc scelerisque tincidunt elit. Vestibulum non mi ipsum. Cras pretium suscipit tellus sit amet aliquet.</a></h3>
-                            <p>Aenean non accumsan ante. Duis et risus accumsan sem tempus porta nec sit amet est. Sed ut euismod quam. Suspendisse potenti. Aliquam fringilla orci tincidunt, ullamcorper erat in, malesuada metus. Vivamus luctus maximus vestibulum. Donec et enim vitae tellus auctor ornare. Aenean leo diam, feugiat sed nulla sed, consequat venenatis est. Praesent commodo consequat pharetra.</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -91,7 +78,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="button_box pb-65">
-                        <a href="#" class="olima_btn">View All Quote</a>
+
                     </div>
                 </div>
             </div>
@@ -103,9 +90,9 @@
                             <li><i class="fas fa-star"></i></li>
                         @endfor
                     </ul>
-                    <p>{{ $comment->comment }}</p>
+                    <p>{{ $comment->message }}</p>
                     <div class="author_box">
-                        <img src="assets/images/admin_5.jpg" class="img-fluid" alt="">
+                        <img src="{{ Voyager::image($comment->avatar) }}" class="img-fluid" alt="">
                         <span>{{ $comment->name }}</span>
                     </div>
                 </div>

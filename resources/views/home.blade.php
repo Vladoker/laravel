@@ -1,6 +1,7 @@
 @extends('layouts.app')
-@section('title'){{ setting('site.title') }}@endsection
-@section('meta_desc'){{ setting('site.description') }}@endsection
+@section('title'){{ $page->first()->title }}@endsection
+@section('meta_desc'){{ $page->first()->meta_description }}@endsection
+@section('meta_keywords'){{ $page->first()->meta_keywords }}@endsection
 @section('content')
     <!-- Start olima_banner section -->
     <section class="olima_banner hero_post_v1">
@@ -17,8 +18,9 @@
                                 <a href="{{ route('recipe', $recipe->slug) }}">{{ $recipe->content }}</a>
                             </h3>
                             <div class="post_meta">
-                                <span class="love">{{ $recipe->likes }}</span>
-                                <span class="comment">127</span>
+
+                                <span class="comment">{{ count($recipe->comments) }}</span>
+                                <span class="eye">{{ $recipe->eye }}</span>
                             </div>
                         </div>
                     </div>
@@ -57,7 +59,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section_title mb-50">
-                                <h3>Latest Recipes</h3>
+                                <h3>{{ setting('home.recipes_title') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -74,8 +76,8 @@
                                             <a href="{{ route('recipe', $recipes->first()->slug) }}" class="cat_btn">{{ $recipes->first()->category_recipe->title }}</a>
                                             <h3><a href="{{ route('recipe', $recipes->first()->slug) }}">{{ $recipes->first()->title }}</a></h3>
                                             <div class="post_meta">
-                                                <span class="love">{{ $recipes->first()->likes }}</span>
-                                                <span class="comment">127</span>
+                                                <span class="eye">{{ $recipes->first()->eye }}</span>
+                                                <span class="comment">{{ count($recipes->first()->comments) }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -104,6 +106,7 @@
                                                 </a>
                                             </span>
                                             <span class="comment">{{ count($recipe->comments) }}</span>
+                                            <span class="eye">{{ $recipe->eye }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -113,34 +116,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="olima_sidebar sidebar_v1">
-                        <div class="widget_box about_box mb-40">
-                            <div class="about_img">
-                                <img src="assets/images/about_1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="about_content">
-                                <h4>Hi, I am Apex!</h4>
-                                <p>Loves nature and healthy food, and good coffee. Don't hesitate to come for say a small "hello!"</p>
-                                <ul class="social_link">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                            <a href="#" class="olima_btn">Learn More</a>
-                        </div>
-                        <div class="widget_box booking_widget mb-40">
-                            <div class="title">
-                                <h3>Cook Book</h3>
-                            </div>
-                            <img src="assets/images/book_1.jpg" class="img-fluid" alt="">
-                            <a href="#" class="olima_btn">Get The Book</a>
-                        </div>
-                        <div class="widget_box add_widget mb-40">
-                            <div class="add_img">
-                                <a href="#"><img src="assets/images/add_1.jpg" class="img-fluid" alt=""></a>
-                            </div>
-                        </div>
+
                         <div class="widget_box featured_post">
                             @foreach($recipes as $index => $recipe)
                                 <div class="single_post d-flex align-items-center">
@@ -158,6 +134,7 @@
                                                 </a>
                                             </span>
                                             <span class="comment">{{ count($recipe->comments) }}</span>
+                                            <span class="eye">{{ $recipe->eye }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -179,89 +156,26 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title mb-50 text-center">
-                        <h3>My Top Videos</h3>
+                        <h3>{{ setting('home.videos_title') }}</h3>
                     </div>
                 </div>
             </div>
             <div class="video_slide_v1">
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_1.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_2.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
+                @foreach($videos as $video)
+                    <div class="grid_item">
+                        <div class="post_img">
+                            <img src="{{ Voyager::image($video->image) }}" class="img-fluid" alt="">
+                            <div class="post_overlay">
+                                <div class="play_button">
+                                    <a href="{{ $video->url }}" class="play_btn"><i class="fas fa-play"></i></a>
+                                </div>
+                                <div class="post_content">
+                                    <h3><a href="{{ $video->url }}">{{ $video->title }}</a></h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_3.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_4.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_5.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid_item">
-                    <div class="post_img">
-                        <img src="assets/images/video_1.jpg" class="img-fluid" alt="">
-                        <div class="post_overlay">
-                            <div class="play_button">
-                                <a href="https://www.youtube.com/watch?v=8PNTZEv-e54" class="play_btn"><i class="fas fa-play"></i></a>
-                            </div>
-                            <div class="post_content">
-                                <h3><a href="#">Honey Lime Rainbow Fruit Salad</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -272,8 +186,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="section_title mb-50">
-                        <h3>Vegetarian</h3>
-                        <p>Etiam convallis elementum sapien, a aliquam turpis aliquam vitae. Praesent sollicitudin felis vel mi facilisis posuere.</p>
+                        <h3>{{ setting('home.vegetarian_title') }}</h3>
+                        <p>{{ setting('home.desc_veg') }}</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -307,7 +221,8 @@
                                                     {{ $recipe->created_at->format('l j, Y') }}
                                                 </a>
                                             </span>
-                                            <span class="comment">127</span>
+                                            <span class="comment">{{ count($recipe->comments) }}</span>
+                                            <span class="eye">{{ $recipe->eye }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -327,7 +242,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title mb-50 text-center">
-                        <h3>Trending Posts</h3>
+                        <h3>{{ setting('home.trending_posts_title') }}</h3>
                     </div>
                 </div>
             </div>
@@ -360,7 +275,7 @@
                                                 {{ $recipe->created_at->format('l j, Y') }}
                                             </a>
                                         </span>
-                                        <span class="comment">127</span>
+                                        <span class="comment">{{ count($recipe->comments) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -373,55 +288,7 @@
     </section>
     <!-- End oilima_trending section -->
     <!-- Start olima_instagram section -->
-    <section class="olima_instagram instagram_v1">
-        <div class="container-full">
-            <div class="instagram_wrap">
-                <div class="instagram_slide_v1">
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_1.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_2.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_3.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_4.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_5.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="insta_wrap_box">
-                    <div class="insta_content">
-                        <h4>Follow Me</h4>
-                        <a href="#">@Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('components.footerImages')
     <!-- End olima_instagram section -->
 
 @endsection

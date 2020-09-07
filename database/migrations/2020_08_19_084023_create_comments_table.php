@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('commentable_type', 50);
             $table->string('name', 20);
             $table->boolean('status');
-            $table->text('comment');
+            $table->text('message');
             $table->timestamps();
         });
     }

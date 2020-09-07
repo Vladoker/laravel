@@ -23,7 +23,7 @@ class CreateRecipesTable extends Migration
             $table->text('content');
             $table->boolean('status');
             $table->boolean('show_index');
-            $table->tinyInteger('likes');
+            $table->tinyInteger('eye');
             $table->string('meta_title', 255);
             $table->string('meta_desc', 512);
             $table->timestamps();

@@ -20,7 +20,7 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->firstOrFail();
+        $post = Post::bySlug($slug)->firstOrFail();
         $comments = $post->comments->filter(function ($comment){
             return $comment['status'] == 1;
         });
@@ -33,18 +33,14 @@ class BlogController extends Controller
 
 
     public function store(Request $request){
-        $data = $request->all();
-        $data['status'] = 1;
-
-        if(Comment::create($data)){
-            return back()->withInput();
-        }
+        Comment::create($request->all());
+        return redirect()->back();
     }
+
 
     private function getPosts() {
         return Post::where('status', 'published')->with('comments','myCategory')->get();
     }
-
     private function getFeaturedPosts(){
         return $this->getPosts()->filter(function ($post){
             return $post['featured'] == 1;

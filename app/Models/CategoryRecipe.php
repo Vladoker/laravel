@@ -10,4 +10,8 @@ class CategoryRecipe extends Model
     {
         return $this->hasMany(Recipe::class, 'categorie_recipe_id');
     }
+
+    public function scopeActive($query) {
+        return $query->where('status', 1);
+    }
 }

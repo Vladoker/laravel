@@ -13,7 +13,7 @@
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <div class="breadcrumb-link">
                         <ul>
-                            <li><a href="#">HOME</a></li>
+                            <li><a href="{{ route('home') }}">HOME</a></li>
                             <li class="active">Contact Us</li>
                         </ul>
                     </div>
@@ -28,8 +28,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="map_box">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=dhaka&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+                        <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d4574.3100617353175!2d28.839022310451856!3d47.02254754582402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d47.022984199999996!2d28.841097299999998!5e0!3m2!1sru!2s!4v1599468571446!5m2!1sru!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -72,7 +71,8 @@
                 <div class="col-lg-9">
                     <div class="contact-form">
                         <h3>Get Touch It</h3>
-                        <form>
+                        <form method="post" action="{{ route('createTestimonial') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form_group">
@@ -83,7 +83,7 @@
                                 <div class="col-lg-6">
                                     <div class="form_group">
                                         <label>last Name</label>
-                                        <input type="text" class="form_control" name="name" required>
+                                        <input type="text" class="form_control" name="lastname" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -118,54 +118,6 @@
     </section>
     <!-- End olima_conact section -->
     <!-- Start olima_instagram section -->
-    <section class="olima_instagram instagram_v1">
-        <div class="container-full">
-            <div class="instagram_wrap">
-                <div class="instagram_slide_v1">
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_1.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_2.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_3.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_4.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_5.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="insta_wrap_box">
-                    <div class="insta_content">
-                        <h4>Follow Me</h4>
-                        <a href="#">@Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  @include('components.footerImages')
     <!-- End olima_instagram section -->
 @endsection

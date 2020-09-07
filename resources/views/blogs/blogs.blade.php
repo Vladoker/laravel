@@ -34,7 +34,6 @@
                             <div class="grid_item mb-50">
                                 <div class="post_img">
                                     <a href="{{ route('article', $post->slug) }}">
-{{--                                        @if(substr_count($post->image,'http:') >)--}}
                                         @php
                                             if(file_exists(public_path('/storage/' . $post->image))){
                                                 $image = Voyager::image($post->image);
@@ -43,7 +42,6 @@
                                             }
                                         @endphp
                                         <img src="{{ $image }}" class="img-fluid" alt="{{ $post->slug }}">
-{{--                                        @endif--}}
                                     </a>
                                 </div>
                                 <div class="post_content">
@@ -57,38 +55,23 @@
                             </div>
                         </div>
                         @endforeach
-                        <div class="col-lg-12">
-                            <div class="olima_pagination mt-30 mb-60">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-arrow-left"></i></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#"><i class="fas fa-arrow-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+{{--                        <div class="col-lg-12">--}}
+{{--                            <div class="olima_pagination mt-30 mb-60">--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="#"><i class="fas fa-arrow-left"></i></a></li>--}}
+{{--                                    <li class="active"><a href="#">1</a></li>--}}
+{{--                                    <li><a href="#">2</a></li>--}}
+{{--                                    <li><a href="#">3</a></li>--}}
+{{--                                    <li><a href="#">4</a></li>--}}
+{{--                                    <li><a href="#"><i class="fas fa-arrow-right"></i></a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="olima_sidebar sidebar_v1">
-                        <div class="widget_box about_box mb-40">
-                            <div class="about_img">
-                                <img src="{{ asset('assets/images/about_1.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="about_content">
-                                <h4>Hi, I am Apex!</h4>
-                                <p>Loves nature and healthy food, and good coffee. Don't hesitate</p>
-                                <ul class="social_link">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                            <a href="#" class="olima_btn">Learn More</a>
-                        </div>
+
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
                             @foreach($popularPosts as $post)
@@ -116,13 +99,6 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="widget_box booking_widget mb-40">
-                            <div class="title">
-                                <h3>Cook Book</h3>
-                            </div>
-                            <img src="{{ asset('assets/images/book_1.jpg') }}" class="img-fluid" alt="">
-                            <a href="#" class="olima_btn">Get The Book</a>
-                        </div>
                         <div class="widget_box categories_widget mb-40">
                             <h4>Categories</h4>
                             <ul>
@@ -133,20 +109,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="widget_box tags_widget mb-40">
-                            <h4>Tags</h4>
-                            <ul>
-                                <li><a href="#">Images Posts</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Life Style</a></li>
-                                <li><a href="#">Asian Food</a></li>
-                                <li><a href="#">Tour</a></li>
-                                <li><a href="#">Recipe</a></li>
-                                <li><a href="#">Food</a></li>
-                                <li><a href="#">Photograph</a></li>
-                            </ul>
-                        </div>
-
 
                     </div>
                 </div>

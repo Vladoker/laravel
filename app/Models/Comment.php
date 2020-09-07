@@ -12,4 +12,8 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
+
+    public function scopeActive($query) {
+        return $query->where('status', '1');
+    }
 }
