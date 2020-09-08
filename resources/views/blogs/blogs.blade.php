@@ -55,18 +55,7 @@
                             </div>
                         </div>
                         @endforeach
-{{--                        <div class="col-lg-12">--}}
-{{--                            <div class="olima_pagination mt-30 mb-60">--}}
-{{--                                <ul>--}}
-{{--                                    <li><a href="#"><i class="fas fa-arrow-left"></i></a></li>--}}
-{{--                                    <li class="active"><a href="#">1</a></li>--}}
-{{--                                    <li><a href="#">2</a></li>--}}
-{{--                                    <li><a href="#">3</a></li>--}}
-{{--                                    <li><a href="#">4</a></li>--}}
-{{--                                    <li><a href="#"><i class="fas fa-arrow-right"></i></a></li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{ $posts->links('components.pagination') }}
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -75,10 +64,17 @@
                         <div class="widget_box featured_post mb-50">
                             <h4>Featured Post</h4>
                             @foreach($popularPosts as $post)
+                                @php
+                                    if(file_exists(public_path('/storage/' . $post->image))){
+                                        $image = Voyager::image($post->image);
+                                    }else{
+                                        $image = $post->image;
+                                    }
+                                @endphp
                                 <div class="single_post d-flex align-items-center">
                                     <div class="post_img">
                                         <a href="{{ route('article', $post->slug) }}">
-                                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid" alt="{{ $post->slug }}">
+                                            <img src="{{ $image }}" class="img-fluid" alt="{{ $post->slug }}">
                                         </a>
                                     </div>
                                     <div class="post_content">

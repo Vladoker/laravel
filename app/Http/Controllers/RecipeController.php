@@ -32,11 +32,13 @@ class RecipeController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'comment' => 'required|max:500',
-            'email' => 'email address',
+            'email' => 'max:100',
             'url' => 'max:255',
         ]);
-
-        Comment::create($validatedData);
+            
+    
+       
+        Comment::create($request->all());
         return redirect()->back();
     }
 }

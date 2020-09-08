@@ -55,19 +55,20 @@ class FrontController extends Controller
         return view('home', compact('categories','recipes', 'sliderRecipes', 'trendingRecipes', 'vegetarianRecipes', 'videos', 'footerImages', 'page'));
     }
 
-    public function about(){
-
+    public function about()
+    {
         $comments = Testimonial::where('status', 1)->get();
-
         return view('about', compact('comments'));
     }
 
-    public function contacts(){
+    public function contacts()
+    {
         $footerImages = FooterImage::get();
         return view('contacts', compact('footerImages'));
     }
 
-    public function testimonial(Request $request){
+    public function testimonial(Request $request)
+    {
         Testimonial::create($request->all());
         return redirect()->route('home');
     }

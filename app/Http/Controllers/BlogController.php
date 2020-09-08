@@ -39,12 +39,10 @@ class BlogController extends Controller
 
 
     private function getPosts() {
-        return Post::where('status', 'published')->with('comments','myCategory')->get();
+        return Post::active()->with('comments','myCategory')->paginate(6);
     }
     private function getFeaturedPosts(){
-        return $this->getPosts()->filter(function ($post){
-            return $post['featured'] == 1;
-        });
+        return Post::active()->where('featured', 1)->with('comments','myCategory')->get();
     }
     private function getCategories() {
         return CategoryPost::with('posts')->get();

@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(TCG\Voyager\Models\Post::class, 3)->create();
+        factory(TCG\Voyager\Models\Post::class, 20)->create();
     }
 }
