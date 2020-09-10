@@ -58,13 +58,15 @@ class FrontController extends Controller
     public function about()
     {
         $comments = Testimonial::where('status', 1)->get();
-        return view('about', compact('comments'));
+        $page = Page::where('slug', 'about');
+        return view('about', compact('comments', 'page'));
     }
 
     public function contacts()
     {
         $footerImages = FooterImage::get();
-        return view('contacts', compact('footerImages'));
+        $page = Page::where('slug', 'contact-us');
+        return view('contacts', compact('footerImages', 'page'));
     }
 
     public function testimonial(Request $request)

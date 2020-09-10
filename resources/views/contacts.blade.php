@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title'){{ $page->first()->title }}@endsection
+@section('meta_desc'){{ $page->first()->meta_description }}@endsection
+@section('meta_keywords'){{ $page->first()->meta_keywords }}@endsection
 @section('content')
     <!-- Start olima_breadcrumb section -->
     <section class="olima_breadcrumb bg_image" style="background-image: url({{ asset('assets/images/breadcrumb_bg.jpg') }});">

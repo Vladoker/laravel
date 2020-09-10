@@ -15,6 +15,7 @@ Route::post('/recipe', 'RecipeController@store')->name('createRecipe');
 
 Route::post('/contacts', 'FrontController@testimonial')->name('createTestimonial');
 
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

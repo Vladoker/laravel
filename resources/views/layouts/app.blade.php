@@ -91,6 +91,7 @@
                     <div class="nav-pushed-item">
                         <div class="header_search">
                             <form>
+                                @csrf
                                 <div class="form_group">
                                     <input type="search" class="form_control" placeholder="Hit enter to search" name="search" required>
                                     <i class="fas fa-search"></i>
