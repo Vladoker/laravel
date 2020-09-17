@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryPost;
 use App\Models\Comment;
+use App\Models\FooterImage;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Post;
 
@@ -14,8 +15,8 @@ class BlogController extends Controller
         $posts = $this->getPosts();
         $popularPosts = $this->getFeaturedPosts();
         $categories = $this->getCategories();
-
-        return view('blogs.blogs', compact('posts', 'popularPosts', 'categories'));
+        $footerImages = FooterImage::get();
+        return view('blogs.blogs', compact('posts', 'popularPosts', 'categories', 'footerImages'));
     }
 
     public function show($slug)

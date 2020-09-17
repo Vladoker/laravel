@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use TCG\Voyager\Facades\Voyager;
 
 Route::get('/', 'FrontController@index')->name('home');
 Route::get('/about', 'FrontController@about')->name('about');

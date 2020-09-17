@@ -5,9 +5,7 @@
                @foreach($footerImages as $image)
                 <div class="gird_item">
                     <div class="post_img">
-
-                            <img src="{{ Voyager::image($image->image) }}" class="img-fluid" alt="">
-
+                        <img src="{{ Voyager::image($image->image) }}" class="img-fluid" alt="">
                     </div>
                 </div>
                 @endforeach

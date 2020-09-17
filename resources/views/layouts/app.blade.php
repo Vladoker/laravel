@@ -15,6 +15,7 @@
     <!------ Favicon Icon ------->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
     <!-- All css -->
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <!-- Bootstrap css-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- fontawesome css -->
@@ -37,6 +38,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
     <!-- style css-->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    
 </head>
 <body>
 <!-- Start preloader area -->
@@ -123,8 +126,12 @@
     </div>
 </header><!-- End olima_header area -->
 
+<div id="app">
+  @yield('content')   
+</div>
 
-@yield('content')
+
+
 
 
 <!-- Start olima_footer -->
@@ -163,6 +170,8 @@
         </div>
     </div>
 </footer>
+
+<script src="{{ asset('/js/app.js') }}"></script>
 <!-- End olima_footer -->
 <!--Scroll-up-->
 <a id="scroll_up" ><i class="fas fa-angle-up"></i></a>
@@ -191,6 +200,8 @@
 <script src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
 <!-- custom js  -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+
 </body>
 
 

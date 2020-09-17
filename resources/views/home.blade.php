@@ -286,9 +286,18 @@
             </div>
         </div>
     </section>
-    <!-- End oilima_trending section -->
-    <!-- Start olima_instagram section -->
-    @include('components.footerImages')
-    <!-- End olima_instagram section -->
+  
+    
+    <footer-images-slider 
+     :images = "{{ $footerImages }}"
+     title="{{ setting('footer.slider_title') }}"
+     link="{{ setting('footer.slider_link') }}"
+     linktitle="{{ setting('footer.link_title') }}"
+     />
+    
+    {{-- @include('components.footerImages') --}}
+  
+
+   
 
 @endsection
