@@ -69,6 +69,12 @@ class FrontController extends Controller
         return view('contacts', compact('footerImages', 'page'));
     }
 
+    public function getInstagram()
+    {
+        $instagram = FooterImage::get();
+        return compact('instagram');
+    }
+
     public function testimonial(Request $request)
     {
         Testimonial::create($request->all());

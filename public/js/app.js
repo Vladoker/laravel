@@ -1957,7 +1957,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['images', 'title', 'link', 'linktitle']
+  props: ['images', 'title', 'link', 'linktitle'],
+  data: function data() {
+    return {
+      instagram: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.images == undefined || this.images == null) {
+      axios.get('api/instagram').then(function (response) {
+        _this.instagram = response.data.instagram;
+      });
+    } else {
+      this.instagram = this.images;
+    }
+  }
 });
 
 /***/ }),
@@ -37627,7 +37643,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "instagram_slide_v1" },
-          _vm._l(_vm.images, function(image, index) {
+          _vm._l(_vm.instagram, function(image, index) {
             return _c("div", { key: index, staticClass: "gird_item" }, [
               _c("div", { staticClass: "post_img" }, [
                 _c("img", {

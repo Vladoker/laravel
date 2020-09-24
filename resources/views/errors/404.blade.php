@@ -36,56 +36,11 @@
             </div>
         </div>
     </section>
-    <!-- End olima_404 section -->
-    <!-- Start olima_instagram section -->
-    <section class="olima_instagram instagram_v1">
-        <div class="container-full">
-            <div class="instagram_wrap">
-                <div class="instagram_slide_v1">
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_1.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_2.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_3.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_4.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_5.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="gird_item">
-                        <div class="post_img">
-                            <a href="#"><img src="assets/images/insta_6.jpg" class="img-fluid" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="insta_wrap_box">
-                    <div class="insta_content">
-                        <h4>Follow Me</h4>
-                        <a href="#">@Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End olima_instagram section -->
+   
+    <footer-images-slider 
+    title="{{ setting('footer.slider_title') }}"
+    link="{{ setting('footer.slider_link') }}"
+    linktitle="{{ setting('footer.link_title') }}"
+    />
+
 @endsection

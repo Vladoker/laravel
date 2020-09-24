@@ -15,7 +15,21 @@ Route::post('/recipe', 'RecipeController@store')->name('createRecipe');
 
 Route::post('/contacts', 'FrontController@testimonial')->name('createTestimonial');
 
+Route::get('/shop', function(){
+    return view('shop');
+});
+Route::get('/shop_details', function(){
+    return view('shop_details');
+});
+Route::get('/cart', function(){
+    return view('cart');
+});
+Route::post('/cart', 'PaymentController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
+Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
+Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');

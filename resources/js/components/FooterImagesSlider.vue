@@ -3,7 +3,7 @@
     <div class="container-full">
         <div class="instagram_wrap">
             <div class="instagram_slide_v1">   
-                <div class="gird_item" v-for="(image, index) in images" :key="index">
+                <div class="gird_item" v-for="(image, index) in instagram" :key="index">
                     <div class="post_img">
                         <img :src="'./storage/' + image.image" class="img-fluid" alt="">
                     </div>
@@ -21,7 +21,27 @@
 </template>
 
 <script>
+
+
+
 export default {
      props: ['images', 'title', 'link', 'linktitle'],
+     data(){
+         return {
+             instagram:[],
+            
+         }
+     },
+     mounted(){
+         if(this.images == undefined || this.images == null){
+             axios.get('api/instagram').then(response => {
+                 this.instagram = response.data.instagram;
+             })
+         }
+         else {
+             this.instagram = this.images;
+         }
+     }
+     
 }
 </script>
