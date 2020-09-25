@@ -2,36 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PayPalPaymentController extends Controller
 {
-    public function handlePayment()
+    public function handlePayment(Request $request)
     {
+    
+        if($request->count < 0) {
+            return redirect()->route('home');
+        }
+
+        $prod = Product::where('slug', $request->slug)->firstOrFail();
+
+       
+
         $product = [];
         $product['items'] = [
             [
-                'name' => 'Nike Joyride 2',
-                'price' => 112,
-                'desc'  => 'Running shoes for Men',
+                'name' => $prod->title,
+                'price' => $prod->price,
+                'desc'  => mb_strimwidth($prod->title, 0, 120, '...'),
                 'currency' => 'RUB',
-                'qty' => 2
+                'qty' => $request->count
             ]
         ];
   
-        $product['invoice_id'] = 2;
+        $product['invoice_id'] = date("Ymdhis");
         $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
         $product['return_url'] = route('success.payment');
         $product['cancel_url'] = route('cancel.payment');
-        $product['total'] = 224;
-  
+        $product['total'] = $prod->price * $request->count;
+
         session()->put('data', $product);
 
         $paypalModule = new ExpressCheckout;
-  
-        $res = $paypalModule->setExpressCheckout($product, true);
-  
+        $res = $paypalModule->setExpressCheckout($product);
+
         return redirect($res['paypal_link']);
     }
    

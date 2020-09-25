@@ -15,16 +15,11 @@ Route::post('/recipe', 'RecipeController@store')->name('createRecipe');
 
 Route::post('/contacts', 'FrontController@testimonial')->name('createTestimonial');
 
-Route::get('/shop', function(){
-    return view('shop');
-});
-Route::get('/shop_details', function(){
-    return view('shop_details');
-});
-Route::get('/cart', function(){
-    return view('cart');
-});
-Route::post('/cart', 'PaymentController@index');
+Route::get('/shop', 'CardController@index');
+
+Route::get('/shop/{slug}', 'CardController@shopDetalis');
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

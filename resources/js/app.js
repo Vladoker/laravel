@@ -24,6 +24,7 @@ window.Vue = require('vue');
 Vue.component('footer-images-slider', require('./components/FooterImagesSlider.vue').default);
 Vue.component('categories-component', require('./components/Categories.vue').default);
 Vue.component('posts-component', require('./components/Posts.vue').default);
+Vue.component('card-component', require('./components/Card.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
