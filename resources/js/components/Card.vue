@@ -13,7 +13,7 @@
                 </li>
             </ul>
             <h3><a :href=" 'shop/' + link">{{ title }}</a></h3>
-            <span class="price">${{ price }}</span>
+            <span class="price">RUB {{ price }}</span>
         </div>
     </div>
 </div>

@@ -28,3 +28,6 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
 Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
 Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');
+
+Route::post('/payment', ['as' => 'payment', 'uses' => 'PaymentController@payWithpaypal']);
+Route::get('/payment/status',['as' => 'status', 'uses' => 'PaymentController@getPaymentStatus']);

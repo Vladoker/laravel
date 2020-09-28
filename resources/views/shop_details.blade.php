@@ -53,10 +53,10 @@
 								<li><i class="fas fa-star"></i></li>
 								<li><i class="fas fa-star"></i></li>
 							</ul>
-							<span class="price">${{ $product->price }}</span>
+							<span class="price">RUB {{ $product->price }}</span>
 							<p>{{ $product->desc }}</p>
 							<div class="button_box pt-30">
-								<form action="{{ route('make.payment') }}" >
+								<form action="{{ route('payment') }}" method="POST">
 									@csrf
 									<input name="slug" type="text" hidden value="{{ $product->slug }}">
 									<input type="number" value="1" name='count'>
